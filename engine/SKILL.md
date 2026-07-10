@@ -6,8 +6,10 @@ description: >
   client asks to write a blog post, generate photography content, draft an article, or check for
   duplicate topics. Trigger on: "write a blog post", "generate a blog", "write about headshots",
   "check for dupes", "{{CITY}} headshot blog", "{{PHOTOGRAPHER NAME}} blog", {{2-3 SERVICE TRIGGER
-  PHRASES FROM THIS CLIENT'S PILLARS §5}}, "city expansion blog", or any time the client
-  wants to publish to their website or track a post. Always use this skill -- do not freeform it.
+  PHRASES FROM THIS CLIENT'S PILLARS §5}}, "city expansion blog", "write my Google Business
+  Profile posts", "GBP posts", "Google posts", "update my Google profile", "seed my GBP Q&A",
+  or any time the client wants to publish to their website, post to Google, or track a post.
+  Always use this skill -- do not freeform it.
 compatibility: "Requires Notion MCP"
 ---
 
@@ -84,8 +86,12 @@ If any reference file states a different number, THIS TABLE WINS.
 5. Generate the Content Pack — social, email, FAQ, image brief (Step 4a)
 6. Generate Internal Linking suggestions (Step 4b)
 7. Deliver Pillar Map update (Step 4c)
-8. Log to Notion or deliver copyable metadata (Step 5)
-9. Capture feedback and heal (Step 6)
+8. Offer a Google Business Profile post from this blog, or run GBP on request (Step 4d)
+9. Log to Notion or deliver copyable metadata (Step 5)
+10. Capture feedback and heal (Step 6)
+
+**GBP-only requests** (e.g. "write my Google posts for this week") skip Steps 1–4c and go
+straight to Step 4d — see references/gbp-engine.md for the four modes.
 
 ---
 
@@ -222,6 +228,22 @@ whether that pillar is live/drafted/unwritten, and the status of all five pillar
 
 ---
 
+## Step 4d: Google Business Profile
+
+Read [references/gbp-engine.md](references/gbp-engine.md). The map-pack listing books more
+sessions than the blog, so keep it fresh.
+
+- **After a blog post (Mode A):** offer one GBP **Update** post spun from this post — a
+  localized companion, not a summary, ending in the right CTA button. Cheap; same cadence as the blog.
+- **On a standalone GBP request (Modes B–D):** generate a batch of posts across the client's
+  pillars and cities, seed owner Q&A, or run the profile optimization pass — per the four modes
+  in gbp-engine.md. Run duplicate detection (Step 2, filtered to Format = GBP) first.
+
+GBP posts use profile §9 inputs. Log them to the same tracker with **Format** set (profile §7),
+or deliver a copyable block if the Format field doesn't exist yet.
+
+---
+
 ## Step 5: Log the Post
 
 Use `notion-create-pages` against the data source ID in client-profile.md §7, mapping to the
@@ -281,4 +303,5 @@ recurring, or outcome-backed signals become rules.
 | [references/ab-titles.md](references/ab-titles.md) | Shared engine | Before Step 4. |
 | [references/content-pack.md](references/content-pack.md) | Shared engine | Before Step 4a. |
 | [references/internal-linking.md](references/internal-linking.md) | Shared engine | Before Step 4b. |
+| [references/gbp-engine.md](references/gbp-engine.md) | Shared engine | Before Step 4d — Google Business Profile posts, Q&A, profile optimization. |
 | [references/topic-bank.md](references/topic-bank.md) | **Generated per client** | When suggesting topics or a calendar. |

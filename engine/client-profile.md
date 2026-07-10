@@ -127,6 +127,7 @@ The specific professional audiences this client targets (drives internal linking
 | Property | Type | Notes |
 |---|---|---|
 | Title | title | Post title |
+| Format | select | Blog Post (default) / GBP Update / GBP Offer / GBP Event / GBP Q&A — lets GBP entries share this DB (see gbp-engine.md) |
 | URL Slug | rich_text | |
 | Date Written | date | |
 | Topic / Keyword | rich_text | primary keyword incl. city |
@@ -156,3 +157,20 @@ real person instead of a generic photographer. Capture the photographer's actual
 - **A specific session story (composite ok):** << ... >>
 - **An opinion they hold about the industry:** << ... >>
 - **How they'd describe their tone:** << warm, direct, occasionally wry; respects the client's intelligence >>
+
+---
+
+## 9. Google Business Profile (drives the GBP engine — see references/gbp-engine.md)
+
+The map-pack listing books more sessions than the blog. Fill these so the engine can generate
+GBP posts, owner Q&A, and the profile optimization pass. Leave a field blank only if it truly
+doesn't apply.
+
+- **GBP listing URL / Place ID:** << the Google Maps/Business Profile link, for reference >>
+- **Primary category:** << the single most specific accurate category — e.g. Portrait studio, Photographer. This is a ranking lever. >>
+- **Secondary categories:** << e.g. Photographer, Commercial photographer, Photography studio >>
+- **Services to list** (usually one per pillar/service line): << Studio headshots; On-location corporate headshots; Team/group headshots; Personal branding sessions; Conference headshot booths >>
+- **Default CTA button + target:** << Book → booking link from §1 (or Call now for high-touch corporate) >>
+- **Standing offers or recurring events** (optional — powers Offer/Event posts): << e.g. quarterly team mini-sessions; conference booth availability; seasonal LinkedIn-refresh pushes >>
+- **Photo library available to attach** (what geo-relevant frames exist): << studio headshots, on-location at named local offices, behind-the-scenes, team setups — no outdoor per §3 >>
+- **Attributes true for this business:** << e.g. by appointment only, on-site services available, woman-owned, LGBTQ+ friendly — only if true >>
