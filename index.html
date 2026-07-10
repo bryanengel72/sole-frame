@@ -303,8 +303,8 @@
   .price-note b{color:var(--signal-2);font-weight:500}
   .price-note .pn-mark{width:6px;height:6px;flex:none;margin-top:6px;background:var(--signal);border-radius:50%;box-shadow:0 0 9px var(--signal)}
   .incl{list-style:none;margin:34px 0 0}
-  .incl li{padding:13px 0;border-top:1px solid var(--line);font-size:15px;color:var(--paper-dim);display:flex;gap:14px;align-items:flex-start}
-  .incl li::before{content:"";width:5px;height:5px;background:var(--signal);border-radius:50%;margin-top:9px;flex:none}
+  .incl li{padding:13px 0 13px 22px;border-top:1px solid var(--line);font-size:15px;color:var(--paper-dim);position:relative;line-height:1.6}
+  .incl li::before{content:"";position:absolute;left:0;top:22px;width:5px;height:5px;background:var(--signal);border-radius:50%}
   .incl li b{color:var(--paper);font-weight:400}
   .price-side h3{font-family:var(--display);font-weight:300;font-size:28px;line-height:1.2;margin-bottom:20px}
   .price-side p{color:var(--paper-dim);font-size:15px;margin-bottom:18px}
@@ -547,14 +547,14 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Investment</span>
-      <h2>One build. One seat. <em>Held for as long as it's yours.</em></h2>
+      <h2>One city. One seat. <em>Held for as long as it's yours.</em></h2>
     </div>
     <div class="pricing-inner">
       <div class="price-card reveal">
-        <div class="price-tag">Founding rate · First ten markets</div>
-        <div class="price-main">$3,000<small> build</small></div>
-        <div class="price-then">then <b>$149</b> / month to hold your exclusive territory</div>
-        <div class="price-note"><span class="pn-mark"></span>This rate holds for the first ten cities only. <b>Two are claimed — eight seats remain</b> before the founding build closes.</div>
+        <div class="price-tag">Founding rate · First five cities</div>
+        <div class="price-main">$350<small> / month</small></div>
+        <div class="price-then">for the first five cities. After that, new seats are <b>$500</b> / month.</div>
+        <div class="price-note"><span class="pn-mark"></span><span>Your founding rate is locked for as long as you hold your seat. <b>Two of the five founding seats are claimed — three remain.</b></span></div>
         <ul class="incl">
           <li><b>The full engine</b>, tuned to your voice, city, and ideal headshot clients</li>
           <li><b>Unlimited posts on demand</b>, each with its complete content pack</li>
