@@ -1,8 +1,10 @@
 # Intake Questionnaire
 
 Ask a new photographer these on the onboarding call. Every answer maps to a field in
-client-profile.md. Aim for 20–30 minutes. The voice-anchor questions (11–15) matter most —
-they're what make the writing sound like a real person. Capture their actual words.
+client-profile.md. Aim for 30–40 minutes. The voice-anchor questions (11–15) matter most —
+they're what make the writing sound like a real person. Capture their actual words. Questions
+16–21 cover Google Business Profile setup — don't skip these; the map-pack listing books more
+sessions than the blog does.
 
 ---
 
@@ -52,11 +54,29 @@ they're what make the writing sound like a real person. Capture their actual wor
     would agree with?
 15. **How would you describe how you talk to clients?** (Warm, blunt, funny, formal?)
 
+## Google Business Profile (→ profile §9)
+
+16. **Do you already have a Google Business Profile set up?** If yes, send me the listing link.
+17. **What category is it listed under right now** — and does that feel like the most specific,
+    accurate one? (e.g. "Photographer" vs. "Portrait studio.") I'll recommend the strongest option.
+18. **What services should show on the listing?** Usually one per pillar — I'll map these from
+    your answer to Q10.
+19. **Any standing offers or recurring things worth posting about?** (Seasonal mini-sessions, a
+    conference booth you run every year, a recurring team-photo package — anything with a
+    repeatable hook.)
+20. **What photos do you already have that I could pull captions from?** (Studio shots,
+    on-location at real local offices, behind-the-scenes, team setups — just the categories, not
+    the files.)
+21. **Anything true about the business worth flagging as an attribute?** (By appointment only,
+    on-site services, woman-owned, LGBTQ+ friendly — only what's real.)
+
 ---
 
 ## After the call
 
-- Fill client-profile.md §1–§6 and §8 from answers 1–15.
+- Fill client-profile.md §1–§6 and §8 from answers 1–15, and §9 from answers 16–21.
 - Create the Notion Blog Tracker (ONBOARDING.md Step 3) → paste the data source ID into §7.
 - Generate voice-persona.md and topic-bank.md from the filled profile (ONBOARDING.md Step 4).
 - Have the photographer read voice-persona.md and correct anything that isn't how they'd say it.
+- If §9 came back thin (no GBP yet, or a weak category), flag it — the GBP engine
+  (references/gbp-engine.md) needs at least a primary category and service list to run Mode D.

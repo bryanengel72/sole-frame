@@ -44,6 +44,8 @@ truth for this client. To build, read the row via Notion and proceed to Step 2.
 - Intake data source ID (read submissions from here): `3f371f59-fc1c-4b96-9c0a-5937a5679015`
 - Form fields map 1:1 to the profile; the DB also has internal pipeline fields (Onboarding
   Status, Skill Slug, Blog Tracker Data Source ID) that the form hides.
+  **As of the §9 (GBP) addition, the live form doesn't yet ask questions 16–21** — add those
+  fields to the Notion form, or fall back to the interview for §9 until it's updated.
 - **Reading submissions:** use `notion-fetch` (by row ID/URL) or `notion-search` (scoped to the
   data source). The SQL `notion-query-data-sources` tool needs a Notion Business+AI plan and is
   NOT available on the current plan — don't rely on it for dup-detection or the monthly mining pass.
@@ -59,6 +61,8 @@ Either way you need:
 - Which service lines they most want to grow
 - Voice anchors: origin story, a real line they say to nervous clients, one session story,
   one industry opinion, how they'd describe their tone
+- Google Business Profile: existing listing link (if any), primary category, services to list,
+  standing offers, available photo categories, true attributes (→ profile §9, powers gbp-engine.md)
 
 ## Step 2 — Fill the profile
 
@@ -106,6 +110,8 @@ Ship it.
 - [ ] The canonical numbers table in SKILL.md is the only source for word/FAQ/image counts
 - [ ] voice-persona.md was read and approved by the photographer
 - [ ] Session model rules match how they really shoot (esp. the "never depict" line)
+- [ ] Profile §9 has at least a primary category and services list — without these, gbp-engine.md
+      Mode D (profile optimization) can't run
 
 ---
 
