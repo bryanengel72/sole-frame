@@ -379,6 +379,15 @@
   .tk b{font-weight:600}
   .tk.open b{text-shadow:0 0 12px rgba(0,229,255,.45)}
 
+  /* ---------- ADD-ONS ---------- */
+  .addons-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:64px}
+  .addon-card{padding:40px 38px 38px}
+  .addon-card h3{font-family:var(--display);font-weight:500;font-size:24px;letter-spacing:-0.01em;margin:20px 0 14px}
+  .addon-card p{color:var(--paper-dim);font-size:15px;line-height:1.65}
+  .addon-card .incl{margin:26px 0 0}
+  .addon-card .price-note{margin-top:24px}
+  .addon-cta{margin-top:28px;display:inline-block}
+
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:900px){
     .wrap{padding:0 22px}
@@ -391,6 +400,7 @@
     .hero-foot{position:static;margin-top:60px;flex-direction:column;align-items:flex-start;gap:12px}
     header{min-height:auto}
     .hero-frame{display:none}
+    .addons-grid{grid-template-columns:1fr}
   }
   @media(max-width:520px){
     .steps{grid-template-columns:1fr}
@@ -476,6 +486,44 @@
         <div class="num">06</div>
         <h3>The exclusivity</h3>
         <p>One headshot photographer per city. The single feature no software company will ever sell you, because it only works if it's rare.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="addons">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Optional add-ons</span>
+      <h2>The engine is the core. <em>These extend it.</em></h2>
+      <p>The content engine is the core. These two add-ons extend it when you are ready to grow faster: one adds motion, one adds hands-free distribution. Add either, both, or neither.</p>
+    </div>
+    <div class="addons-grid">
+      <div class="addon-card price-card reveal">
+        <div class="price-tag">Powered by Higgsfield</div>
+        <h3>Add Motion to Your Brand</h3>
+        <p>Short-form video is the fastest-growing format on every platform, and it is where most photographers still are not competing. This add-on brings AI-assisted video into your content mix: branded promo clips, animated intros, and short vertical pieces built to match your studio's look, without a videographer, a shoot day, or an editing suite.</p>
+        <ul class="incl">
+          <li>Short-form branded video clips, produced per project</li>
+          <li>Vertical formats sized for Reels, LinkedIn video, and Shorts</li>
+          <li>Motion pieces that match your studio's visual style</li>
+          <li>No shoot day, no gear, no editing software required</li>
+        </ul>
+        <div class="price-note"><span class="pn-mark"></span><span>Requires a separate Higgsfield subscription. That cost depends on the plan you choose directly with Higgsfield. One-time setup is <b>$39</b>, which we handle.</span></div>
+        <a href="#claim" class="btn-primary addon-cta">Ask about video</a>
+      </div>
+      <div class="addon-card price-card reveal">
+        <div class="price-tag">Powered by Blotato</div>
+        <h3>Your Content, Published for You</h3>
+        <p>The content engine already writes your posts in your voice. This add-on connects that output to automated publishing, so approved posts go out to Instagram, Facebook, and LinkedIn on schedule, without you copying and pasting into every app. You approve. It publishes.</p>
+        <ul class="incl">
+          <li>Automated publishing and scheduling to Instagram, Facebook, and LinkedIn</li>
+          <li>Every post gated behind your explicit approval, no surprises</li>
+          <li>Scheduled posting so your feed stays consistent without daily effort</li>
+          <li>Published links tracked automatically, so you always know what went out</li>
+        </ul>
+        <div class="price-note"><span class="pn-mark"></span><span>Requires a separate Blotato subscription. That cost depends on the plan you choose directly with Blotato. One-time setup is <b>$39</b>, which we handle.</span></div>
+        <a href="#claim" class="btn-primary addon-cta">Ask about distribution</a>
       </div>
     </div>
   </div>
