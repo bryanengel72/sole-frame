@@ -44,8 +44,10 @@ truth for this client. To build, read the row via Notion and proceed to Step 2.
 - Intake data source ID (read submissions from here): `3f371f59-fc1c-4b96-9c0a-5937a5679015`
 - Form fields map 1:1 to the profile; the DB also has internal pipeline fields (Onboarding
   Status, Skill Slug, Blog Tracker Data Source ID) that the form hides.
-  **As of the §9 (GBP) addition, the live form doesn't yet ask questions 16–21** — add those
-  fields to the Notion form, or fall back to the interview for §9 until it's updated.
+  **The GBP (§9) columns exist on the database** (GBP Listing URL, GBP Primary Category,
+  GBP Services, GBP Standing Offers, GBP Photo Categories, GBP Attributes) — but Notion Form
+  views don't auto-add new columns. Open the form in Notion and toggle these 6 fields on before
+  relying on self-serve intake to capture §9; until then, fall back to the interview.
 - **Reading submissions:** use `notion-fetch` (by row ID/URL) or `notion-search` (scoped to the
   data source). The SQL `notion-query-data-sources` tool needs a Notion Business+AI plan and is
   NOT available on the current plan — don't rely on it for dup-detection or the monthly mining pass.
