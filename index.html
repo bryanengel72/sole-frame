@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sole Frame — One headshot photographer per city</title>
+<meta name="description" content="The content engine that makes you the headshot photographer your city finds first. One headshot photographer per market. When your city is taken, it's taken.">
+<meta name="theme-color" content="#0b0e14">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%230b0e14'/%3E%3Cg fill='none' stroke='%2300e5ff' stroke-width='4'%3E%3Cpath d='M17 27V17h10'/%3E%3Cpath d='M47 27V17H37'/%3E%3Cpath d='M17 37v10h10'/%3E%3Cpath d='M47 37v10H37'/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:title" content="Sole Frame — One headshot photographer per city">
+<meta property="og:description" content="A private content engine, licensed to exactly one headshot photographer per market. When your city is taken, it's taken.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sole Frame — be the headshot photographer your city finds first.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sole Frame — One headshot photographer per city">
+<meta name="twitter:description" content="A private content engine, licensed to exactly one headshot photographer per market. When your city is taken, it's taken.">
+<meta name="twitter:image" content="/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b0e14;
+    --ink-2:#11141c;
+    --panel:#151821;
+    --line:rgba(248,250,252,0.07);
+    --line-strong:rgba(248,250,252,0.15);
+    --paper:#f8fafc;
+    --paper-dim:#94a3b8;
+    --paper-faint:#5c6a7e;
+    --signal:#00e5ff;
+    --signal-2:#7df3ff;
+    --display:"Outfit",sans-serif;
+    --sans:"Inter",system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sans);
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--signal);color:var(--ink)}
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:1.5px solid var(--signal);outline-offset:3px}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:.34em;
+    text-transform:uppercase;
+    color:var(--signal);
+  }
+  .rule{height:1px;background:var(--line);width:100%}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 32px;
+    background:rgba(10,10,11,0);
+    transition:background .5s ease,border-color .5s ease,padding .5s ease;
+    border-bottom:1px solid transparent;
+  }
+  nav.scrolled{
+    background:rgba(10,10,11,.82);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+    padding:16px 32px;
+  }
+  .brand{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:20px;
+    letter-spacing:.02em;
+    display:flex;align-items:center;gap:11px;
+  }
+  .brand .mark{
+    width:22px;height:22px;position:relative;flex:none;
+  }
+  .brand .mark span{
+    position:absolute;width:9px;height:9px;border:1.4px solid var(--signal);
+  }
+  .brand .mark span:nth-child(1){top:0;left:0;border-right:none;border-bottom:none}
+  .brand .mark span:nth-child(2){top:0;right:0;border-left:none;border-bottom:none}
+  .brand .mark span:nth-child(3){bottom:0;left:0;border-right:none;border-top:none}
+  .brand .mark span:nth-child(4){bottom:0;right:0;border-left:none;border-top:none}
+  .nav-cta{
+    font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--paper);text-decoration:none;
+    border:1px solid var(--line-strong);padding:11px 20px;border-radius:2px;
+    transition:all .35s ease;
+  }
+  .nav-cta:hover{border-color:var(--signal);color:var(--signal)}
+
+  /* ---------- HERO ---------- */
+  header{
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    position:relative;padding:140px 0 90px;overflow:hidden;
+  }
+  .hero-grid{
+    position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(1200px 700px at 72% 18%, rgba(0,229,255,.09), transparent 60%),
+      radial-gradient(900px 900px at 10% 100%, rgba(0,229,255,.045), transparent 55%);
+  }
+  .hero-grid::after{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(circle at 60% 40%,black,transparent 78%);
+    -webkit-mask-image:radial-gradient(circle at 60% 40%,black,transparent 78%);
+    opacity:.5;
+  }
+  .hero-frame{position:absolute;inset:118px 44px 96px;z-index:0;pointer-events:none;opacity:.3}
+  .hero-frame span{position:absolute;width:30px;height:30px;border:1px solid var(--signal)}
+  .hero-frame span:nth-child(1){top:0;left:0;border-right:none;border-bottom:none}
+  .hero-frame span:nth-child(2){top:0;right:0;border-left:none;border-bottom:none}
+  .hero-frame span:nth-child(3){bottom:0;left:0;border-right:none;border-top:none}
+  .hero-frame span:nth-child(4){bottom:0;right:0;border-left:none;border-top:none}
+  .hero-inner{position:relative;z-index:1}
+  .hero-eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:30px}
+  .hero-eyebrow .line{width:52px;height:1px;background:var(--signal);opacity:.6}
+  h1{
+    font-family:var(--display);
+    font-weight:300;
+    font-size:clamp(44px,7.4vw,104px);
+    line-height:0.98;
+    letter-spacing:-0.02em;
+    max-width:16ch;
+  }
+  h1 em{font-style:italic;color:var(--signal-2);font-weight:400}
+  .hero-sub{
+    margin-top:34px;max-width:52ch;font-size:clamp(15px,1.5vw,18px);
+    color:var(--paper-dim);line-height:1.65;
+  }
+  .hero-actions{margin-top:46px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  .btn-primary{
+    font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--ink);text-decoration:none;
+    background:var(--signal);padding:17px 34px;border-radius:2px;
+    transition:all .35s ease;border:1px solid var(--signal);
+  }
+  .btn-primary:hover{background:var(--signal-2);border-color:var(--signal-2);transform:translateY(-2px)}
+  .btn-ghost{
+    font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:.05em;
+    color:var(--paper-dim);text-decoration:none;display:flex;align-items:center;gap:9px;
+    transition:color .3s ease;
+  }
+  .btn-ghost:hover{color:var(--paper)}
+  .btn-ghost .arrow{transition:transform .3s ease}
+  .btn-ghost:hover .arrow{transform:translateX(4px)}
+
+  .hero-foot{
+    position:absolute;bottom:34px;left:0;right:0;z-index:1;
+    display:flex;justify-content:space-between;align-items:flex-end;
+  }
+  .hero-foot .scarcity{font-family:var(--display);font-style:italic;font-size:15px;color:var(--paper-faint)}
+  .hero-foot .scarcity b{color:var(--signal);font-style:normal;font-weight:500}
+
+  /* ---------- TICKER ---------- */
+  .ticker{
+    overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:15px 0;position:relative;
+  }
+  .ticker::before,.ticker::after{
+    content:"";position:absolute;top:0;bottom:0;width:120px;z-index:1;pointer-events:none;
+  }
+  .ticker::before{left:0;background:linear-gradient(90deg,var(--ink),transparent)}
+  .ticker::after{right:0;background:linear-gradient(-90deg,var(--ink),transparent)}
+  .ticker-track{display:flex;width:max-content;animation:tick 70s linear infinite}
+  .ticker:hover .ticker-track{animation-play-state:paused}
+  @keyframes tick{to{transform:translateX(-50%)}}
+  .tk{
+    flex:none;display:flex;align-items:center;gap:12px;padding:0 30px;
+    font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--paper-dim);white-space:nowrap;
+  }
+  .tk::after{content:"";width:4px;height:4px;background:var(--line-strong);transform:rotate(45deg);margin-left:30px}
+  .tk b{font-weight:500}
+  .tk.open b{color:var(--signal)}
+  .tk.held{color:var(--paper-faint)}
+  .tk.held b{color:var(--paper-faint)}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{position:relative;padding:120px 0}
+  .sec-head{margin-bottom:70px;max-width:60ch}
+  .sec-head h2{
+    font-family:var(--display);font-weight:300;
+    font-size:clamp(30px,4.4vw,54px);line-height:1.06;letter-spacing:-0.015em;
+    margin-top:22px;
+  }
+  .sec-head h2 em{font-style:italic;color:var(--signal-2)}
+  .sec-head p{margin-top:22px;color:var(--paper-dim);font-size:17px;max-width:50ch}
+
+  /* ---------- SERVICES ---------- */
+  .services{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .svc{
+    background:var(--ink);padding:44px 40px;position:relative;
+    transition:background .5s ease;min-height:230px;display:flex;flex-direction:column;
+  }
+  .svc:hover{background:var(--ink-2)}
+  .svc .num{font-family:var(--display);font-size:13px;color:var(--signal);letter-spacing:.1em;margin-bottom:26px}
+  .svc h3{font-family:var(--display);font-weight:400;font-size:23px;letter-spacing:-0.01em;margin-bottom:14px}
+  .svc p{color:var(--paper-dim);font-size:15px;line-height:1.6}
+  .svc .glint{
+    position:absolute;top:0;left:0;height:2px;width:0;background:var(--signal);
+    transition:width .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .svc:hover .glint{width:100%}
+
+  /* ---------- PROCESS ---------- */
+  .process{border-top:1px solid var(--line)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .step{padding:0 30px 0 0;position:relative}
+  .step:not(:last-child)::after{content:"";position:absolute;top:8px;right:24px;width:6px;height:6px;border-top:1px solid var(--signal);border-right:1px solid var(--signal);transform:rotate(45deg);opacity:.5}
+  .step .k{font-family:var(--display);font-style:italic;font-size:44px;color:var(--line-strong);line-height:1;margin-bottom:22px;display:block}
+  .step h4{font-family:var(--display);font-weight:400;font-size:19px;margin-bottom:11px}
+  .step p{color:var(--paper-dim);font-size:14px;line-height:1.55}
+
+  /* ---------- EXCLUSIVITY / STATEMENT ---------- */
+  .statement{text-align:center;padding:150px 0;position:relative}
+  .statement::before{
+    content:"\201C";position:absolute;top:34px;left:50%;transform:translateX(-50%);
+    font-family:var(--display);font-style:italic;font-size:270px;line-height:1;
+    color:var(--signal);opacity:.06;pointer-events:none;
+  }
+  .statement .big{
+    font-family:var(--display);font-weight:300;font-style:italic;
+    font-size:clamp(28px,4.6vw,52px);line-height:1.24;letter-spacing:-0.01em;
+    max-width:24ch;margin:0 auto;
+  }
+  .statement .big b{font-style:normal;font-weight:400;color:var(--signal-2)}
+  .statement .attr{margin-top:40px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--paper-faint)}
+
+  /* ---------- VAULT / AVAILABILITY ---------- */
+  .vault{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink-2)}
+  .vault-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .vault-copy h2{font-family:var(--display);font-weight:300;font-size:clamp(30px,4vw,48px);line-height:1.06;letter-spacing:-0.015em;margin-top:22px}
+  .vault-copy h2 em{font-style:italic;color:var(--signal-2)}
+  .vault-copy p{margin-top:22px;color:var(--paper-dim);font-size:16px;max-width:44ch}
+  .checker{
+    background:var(--ink);border:1px solid var(--line-strong);border-radius:3px;
+    padding:38px;position:relative;overflow:hidden;
+  }
+  .checker::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--signal),transparent);opacity:.6}
+  .checker label{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--paper-faint);display:block;margin-bottom:16px}
+  .checker-field{display:flex;gap:10px}
+  .checker input{
+    flex:1;background:transparent;border:1px solid var(--line-strong);border-radius:2px;
+    color:var(--paper);font-family:var(--sans);font-size:16px;padding:15px 16px;outline:none;
+    transition:border-color .3s ease;
+  }
+  .checker input:focus{border-color:var(--signal)}
+  .checker input::placeholder{color:var(--paper-faint)}
+  .checker button{
+    background:var(--signal);color:var(--ink);border:none;border-radius:2px;
+    font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    padding:0 26px;cursor:pointer;transition:background .3s ease;
+  }
+  .checker button:hover{background:var(--signal-2)}
+  .result{margin-top:24px;min-height:26px;font-size:15px;opacity:0;transform:translateY(6px);transition:all .45s ease}
+  .result.show{opacity:1;transform:none}
+  .result.open{color:var(--signal-2)}
+  .result.taken{color:var(--paper-dim)}
+  .result .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:9px;vertical-align:middle}
+  .result.open .dot{background:var(--signal);box-shadow:0 0 12px var(--signal)}
+  .result.taken .dot{background:#555}
+  .result .claim-link{display:inline-flex;align-items:center;gap:7px;margin-left:14px;color:var(--signal-2);text-decoration:none;font-size:14px;font-weight:500;border-bottom:1px solid transparent;transition:border-color .25s ease}
+  .result .claim-link:hover{border-bottom-color:var(--signal-2)}
+  .claimed-list{margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+  .claimed-list .ct{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--paper-faint);margin-bottom:6px}
+  .lrow{display:flex;align-items:baseline;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .lrow:last-child{border-bottom:none}
+  .lrow .no{font-family:var(--display);font-style:italic;font-size:13px;color:var(--paper-faint);width:48px;flex:none}
+  .lrow .lcity{color:var(--paper);letter-spacing:.02em}
+  .lrow.held .lcity{color:var(--paper-dim)}
+  .lrow .dots{flex:1;border-bottom:1px dotted var(--line-strong);transform:translateY(-4px)}
+  .lrow .lst{font-size:10.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;flex:none}
+  .lrow.held .lst{color:var(--paper-faint)}
+  .lrow.open .lst{color:var(--signal)}
+
+  /* ---------- PRICING ---------- */
+  .pricing-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:start}
+  .price-card{
+    border:1px solid var(--line-strong);border-radius:3px;background:var(--ink-2);
+    padding:46px 44px;position:relative;
+  }
+  .price-card::before{content:"";position:absolute;inset:0;border-radius:3px;padding:1px;background:linear-gradient(160deg,var(--signal),transparent 40%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.5;pointer-events:none}
+  .price-tag{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--signal)}
+  .price-main{font-family:var(--display);font-weight:300;font-size:60px;line-height:1;margin:20px 0 6px;letter-spacing:-0.02em}
+  .price-main small{font-size:20px;color:var(--paper-dim);font-style:italic}
+  .price-then{color:var(--paper-dim);font-size:16px}
+  .price-then b{color:var(--paper);font-weight:400;font-family:var(--display);font-size:22px}
+  .price-note{margin-top:22px;padding:14px 16px;border:1px solid var(--line);border-radius:3px;background:rgba(0,229,255,.04);font-size:13.5px;line-height:1.55;color:var(--paper-dim);display:flex;gap:11px;align-items:flex-start}
+  .price-note b{color:var(--signal-2);font-weight:500}
+  .price-note .pn-mark{width:6px;height:6px;flex:none;margin-top:6px;background:var(--signal);border-radius:50%;box-shadow:0 0 9px var(--signal)}
+  .incl{list-style:none;margin:34px 0 0}
+  .incl li{padding:13px 0;border-top:1px solid var(--line);font-size:15px;color:var(--paper-dim);display:flex;gap:14px;align-items:flex-start}
+  .incl li::before{content:"";width:5px;height:5px;background:var(--signal);border-radius:50%;margin-top:9px;flex:none}
+  .incl li b{color:var(--paper);font-weight:400}
+  .price-side h3{font-family:var(--display);font-weight:300;font-size:28px;line-height:1.2;margin-bottom:20px}
+  .price-side p{color:var(--paper-dim);font-size:15px;margin-bottom:18px}
+  .price-side .anchor{border-left:2px solid var(--signal);padding-left:20px;margin-top:26px}
+  .price-side .anchor b{color:var(--paper);font-weight:400}
+
+  /* ---------- FAQ ---------- */
+  .faq{border-top:1px solid var(--line)}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-q{width:100%;background:none;border:none;color:var(--paper);text-align:left;cursor:pointer;
+    padding:28px 0;font-family:var(--display);font-weight:400;font-size:21px;letter-spacing:-0.01em;
+    display:flex;justify-content:space-between;align-items:center;gap:20px;transition:color .3s ease}
+  .faq-q:hover{color:var(--signal-2)}
+  .faq-q .pm{flex:none;width:20px;height:20px;position:relative}
+  .faq-q .pm::before,.faq-q .pm::after{content:"";position:absolute;background:var(--signal);transition:transform .35s ease}
+  .faq-q .pm::before{top:9px;left:0;width:20px;height:1.5px}
+  .faq-q .pm::after{left:9px;top:0;width:1.5px;height:20px}
+  .faq-item.open .pm::after{transform:scaleY(0)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease}
+  .faq-a p{padding:0 0 30px;color:var(--paper-dim);font-size:16px;max-width:64ch;line-height:1.68}
+
+  /* ---------- FINAL CTA ---------- */
+  .final{text-align:center;padding:160px 0 140px;position:relative}
+  .final::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 500px at 50% 40%,rgba(0,229,255,.08),transparent 60%)}
+  .final-inner{position:relative}
+  .final h2{font-family:var(--display);font-weight:300;font-size:clamp(34px,5.4vw,68px);line-height:1.02;letter-spacing:-0.02em;max-width:18ch;margin:0 auto}
+  .final h2 em{font-style:italic;color:var(--signal-2)}
+  .final p{margin:28px auto 44px;color:var(--paper-dim);font-size:17px;max-width:44ch}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:44px 0}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .foot-inner .fb{font-family:var(--display);font-size:17px}
+  .foot-inner .fm{font-size:13px;color:var(--paper-faint)}
+  .foot-inner a{color:var(--paper-dim);text-decoration:none;font-size:13px;transition:color .3s ease}
+  .foot-inner a:hover{color:var(--signal)}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- SIGNAL LAYER — Signal Over Noise AI brand ---------- */
+  h1{font-weight:200}
+  h1 em,.sec-head h2 em,.vault-copy h2 em,.final h2 em{
+    font-style:normal;font-weight:600;color:var(--signal);
+    text-shadow:0 0 18px rgba(0,229,255,.55),0 0 48px rgba(0,229,255,.28);
+  }
+  .eyebrow::before{content:"";display:inline-block;width:6px;height:6px;background:var(--signal);margin-right:12px;vertical-align:2px}
+  .hero-eyebrow .eyebrow::before{display:none}
+  .brand{font-weight:600}
+  .btn-primary{border-radius:8px;font-weight:600;color:#04141a;box-shadow:0 0 24px rgba(0,229,255,.22)}
+  .btn-primary:hover{box-shadow:0 0 34px rgba(0,229,255,.4)}
+  .nav-cta{border-radius:8px}
+  .sec-head h2,.vault-copy h2,.final h2{font-weight:300}
+  .svc h3,.step h4,.price-side h3{font-weight:500}
+  .svc .num,.step .k{font-family:var(--display);font-style:normal;font-weight:700;font-size:40px;color:rgba(248,250,252,.07);letter-spacing:0;line-height:1}
+  .step .k{font-size:56px}
+  .checker,.price-card{border-radius:14px}
+  .checker input,.checker button{border-radius:8px}
+  .checker button{font-weight:600;color:#04141a}
+  .statement .big{font-style:normal;font-weight:300}
+  .statement .big b{font-weight:600;color:var(--signal);text-shadow:0 0 18px rgba(0,229,255,.45)}
+  .statement::before{opacity:.04}
+  .hero-foot .scarcity{font-family:var(--sans);font-style:normal;font-size:13.5px;letter-spacing:.04em}
+  .lrow .no{font-style:normal;font-weight:600;font-size:11.5px;letter-spacing:.1em}
+  .price-main{font-weight:600}
+  .price-main small{font-style:normal;font-weight:300}
+  .price-then b{font-weight:600}
+  .price-note{border-radius:10px}
+  .result.open{color:var(--signal-2)}
+  .faq-q{font-weight:500}
+  .tk b{font-weight:600}
+  .tk.open b{text-shadow:0 0 12px rgba(0,229,255,.45)}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .wrap{padding:0 22px}
+    section{padding:80px 0}
+    .services{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr;gap:44px 30px}
+    .step:not(:last-child)::after{display:none}
+    .vault-inner{grid-template-columns:1fr;gap:44px}
+    .pricing-inner{grid-template-columns:1fr;gap:44px}
+    .hero-foot{position:static;margin-top:60px;flex-direction:column;align-items:flex-start;gap:12px}
+    header{min-height:auto}
+    .hero-frame{display:none}
+  }
+  @media(max-width:520px){
+    .steps{grid-template-columns:1fr}
+    .checker-field{flex-direction:column}
+    .checker button{padding:15px}
+    nav .nav-cta{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="brand">
+    <div class="mark"><span></span><span></span><span></span><span></span></div>
+    Sole Frame
+  </div>
+  <a href="#claim" class="nav-cta">Claim your city</a>
+</nav>
+
+<header>
+  <div class="hero-grid"></div>
+  <div class="hero-frame" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <div class="wrap hero-inner">
+    <div class="hero-eyebrow reveal">
+      <span class="line"></span>
+      <span class="eyebrow">One headshot photographer per city</span>
+    </div>
+    <h1 class="reveal">Be the headshot photographer your city <em>finds first.</em></h1>
+    <p class="hero-sub reveal">A private content engine that makes you the headshot photographer your market discovers before anyone else. Built for one headshot photographer per city. When yours is claimed, it's closed.</p>
+    <div class="hero-actions reveal">
+      <a href="#claim" class="btn-primary">Check your city</a>
+      <a href="#services" class="btn-ghost">See what's inside <span class="arrow">→</span></a>
+    </div>
+  </div>
+  <div class="wrap hero-foot reveal">
+    <div class="scarcity">Markets are granted, not sold. <b>Two are already gone.</b></div>
+    <div class="eyebrow">A Signal Over Noise AI product</div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The engine</span>
+      <h2>Not a tool. A <em>standing advantage</em> only you hold.</h2>
+      <p>Six systems working as one, built specifically around headshot photography. Each post you request runs the full engine, then compounds. Your competitors can ask a generic AI for "headshot marketing tips" and get nowhere near it.</p>
+    </div>
+    <div class="services">
+      <div class="svc reveal"><span class="glint"></span>
+        <div class="num">01</div>
+        <h3>The content engine</h3>
+        <p>Search and answer-engine optimized posts written in your voice, aimed at your city and the exact clients booking headshots: job seekers, executives, agents, actors, and LinkedIn profiles that need to look sharp.</p>
+      </div>
+      <div class="svc reveal"><span class="glint"></span>
+        <div class="num">02</div>
+        <h3>The strategy layer</h3>
+        <p>A five-pillar architecture built around headshot demand — corporate teams, personal branding, actor and model shoots, LinkedIn refreshes, and seasonal booking pushes — so content stops scattering and starts stacking.</p>
+      </div>
+      <div class="svc reveal"><span class="glint"></span>
+        <div class="num">03</div>
+        <h3>Duplicate protection</h3>
+        <p>The engine remembers everything you've published. You never repeat yourself, and every new post earns its place in the library.</p>
+      </div>
+      <div class="svc reveal"><span class="glint"></span>
+        <div class="num">04</div>
+        <h3>The content pack</h3>
+        <p>Every blog auto-generates a LinkedIn post, Instagram caption, Facebook post, email, and an FAQ block. One request, a week of presence.</p>
+      </div>
+      <div class="svc reveal"><span class="glint"></span>
+        <div class="num">05</div>
+        <h3>The tracking system</h3>
+        <p>A private Notion workspace that logs every post, maps your pillars, and tells you exactly what to write next. Nothing slips.</p>
+      </div>
+      <div class="svc reveal"><span class="glint"></span>
+        <div class="num">06</div>
+        <h3>The exclusivity</h3>
+        <p>One headshot photographer per city. The single feature no software company will ever sell you, because it only works if it's rare.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Four steps to <em>owning your market.</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="k">01</span>
+        <h4>Claim your city</h4>
+        <p>Check availability. If your market is open, it's yours to lock. Once granted, no other headshot photographer in your city gets in.</p>
+      </div>
+      <div class="step reveal">
+        <span class="k">02</span>
+        <h4>We tune the engine</h4>
+        <p>Your voice, your pillars, your ideal clients, your local market. Built and calibrated to sound unmistakably like you.</p>
+      </div>
+      <div class="step reveal">
+        <span class="k">03</span>
+        <h4>Request on demand</h4>
+        <p>Ask for a post. Get the article plus the full content pack in minutes, ready to publish across every channel.</p>
+      </div>
+      <div class="step reveal">
+        <span class="k">04</span>
+        <h4>Compound and hold</h4>
+        <p>The engine learns your voice and what actually books sessions, sharpening every month. Your library grows, your authority stacks, and your market stays closed for as long as it's yours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="statement-wrap">
+  <div class="wrap statement">
+    <p class="big reveal">I only build for <b>one headshot photographer per market.</b> The point is to make you the obvious choice locally. That falls apart the moment I hand the same engine to the studio down the street.</p>
+    <div class="attr reveal">The exclusivity principle</div>
+  </div>
+</section>
+
+<section class="vault" id="claim">
+  <div class="wrap vault-inner">
+    <div class="vault-copy reveal">
+      <span class="eyebrow">Territory</span>
+      <h2>Is your city still <em>open?</em></h2>
+      <p>Each market holds exactly one seat for a headshot photographer. Enter your city to see whether the seat is still available, or already gone.</p>
+    </div>
+    <div class="checker reveal">
+      <label for="cityInput">Check availability</label>
+      <div class="checker-field">
+        <input id="cityInput" type="text" placeholder="Enter your city" autocomplete="off" spellcheck="false">
+        <button id="checkBtn">Check</button>
+      </div>
+      <div class="result" id="result" aria-live="polite"></div>
+      <div class="claimed-list">
+        <div class="ct">The registry</div>
+        <div class="lrow held"><span class="no">№ 001</span><span class="lcity">Kansas City</span><span class="dots"></span><span class="lst">Held</span></div>
+        <div class="lrow held"><span class="no">№ 002</span><span class="lcity">Boston</span><span class="dots"></span><span class="lst">Held</span></div>
+        <div class="lrow open"><span class="no">№ 003</span><span class="lcity">Your city</span><span class="dots"></span><span class="lst">Open</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Investment</span>
+      <h2>One build. One seat. <em>Held for as long as it's yours.</em></h2>
+    </div>
+    <div class="pricing-inner">
+      <div class="price-card reveal">
+        <div class="price-tag">Founding rate · First ten markets</div>
+        <div class="price-main">$3,000<small> build</small></div>
+        <div class="price-then">then <b>$149</b> / month to hold your exclusive territory</div>
+        <div class="price-note"><span class="pn-mark"></span>This rate holds for the first ten cities only. <b>Two are claimed — eight seats remain</b> before the founding build closes.</div>
+        <ul class="incl">
+          <li><b>The full engine</b>, tuned to your voice, city, and ideal headshot clients</li>
+          <li><b>Unlimited posts on demand</b>, each with its complete content pack</li>
+          <li><b>Your private Notion workspace</b>, tracking and pillar map included</li>
+          <li><b>Exclusive rights</b> to your city as the only headshot photographer on the engine, for as long as you hold the seat</li>
+          <li><b>Renewable exclusivity</b>. Lapse it, and your market reopens to the field</li>
+        </ul>
+      </div>
+      <div class="price-side reveal">
+        <h3>Priced against the agency you'd otherwise hire.</h3>
+        <p>A content agency runs $500 to $2,000 a month and rarely delivers anything this specific to headshot clients in your market. None of them will ever give you exclusivity.</p>
+        <p>The monthly isn't a software fee. It's rent on being the only one.</p>
+        <div class="anchor">
+          <b>Time-boxed and yours.</b> Exclusivity is granted per city and renews with your seat. No perpetual lockouts, no surprises.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Before you claim</span>
+      <h2>The questions <em>worth asking.</em></h2>
+    </div>
+    <div class="reveal">
+      <div class="faq-item">
+        <button class="faq-q">What exactly does "exclusive" mean? <span class="pm"></span></button>
+        <div class="faq-a"><p>One headshot photographer per metro market. If you hold Boston, no other headshot photographer in Boston can license the engine. Your exact city is closed to the competition for as long as your seat is active.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What happens if I expand to another city? <span class="pm"></span></button>
+        <div class="faq-a"><p>You can claim additional markets as separate seats, provided they're still open. Many photographers lock a second city early precisely so a competitor can't take it first.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I own the content the engine produces? <span class="pm"></span></button>
+        <div class="faq-a"><p>Yes. Every post, caption, and asset the engine generates for you is yours to publish, keep, and use however you like. The engine itself and your territory license remain part of your active seat.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What happens if I stop paying? <span class="pm"></span></button>
+        <div class="faq-a"><p>Your seat closes and your market reopens to the field. Anything you already published stays yours, but the engine and the exclusivity end with the license. The monthly is what keeps your city locked.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How fast can I start requesting posts? <span class="pm"></span></button>
+        <div class="faq-a"><p>Once your city is claimed, tuning the engine to your voice and market takes a short onboarding. After that, you request a post and receive the article plus the full content pack the same session.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="final">
+  <div class="wrap final-inner">
+    <div class="reveal">
+      <h2>Your city has <em>one seat.</em> Take it before another headshot photographer does.</h2>
+      <p>Check availability now. Markets are granted in the order they're claimed, and they don't come back while they're held.</p>
+      <a href="#claim" class="btn-primary">Claim your city</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <div class="fb">Sole Frame</div>
+      <div class="fm">One headshot photographer per city. A <a href="https://signalovernoiseai.com" style="color:inherit">Signal Over Noise AI</a> product.</div>
+    </div>
+    <div>
+      <a href="#claim">Check availability</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // nav scroll state
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>40)});
+
+  // reveal on scroll
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.transitionDelay=(Math.min(i%6,5)*0.06)+'s';
+    io.observe(el);
+  });
+
+  // city ticker
+  const tickerCities=[
+    ['Kansas City','Held'],['Boston','Held'],['Austin','Open'],['Denver','Open'],['Chicago','Open'],
+    ['Nashville','Open'],['Seattle','Open'],['Atlanta','Open'],['Phoenix','Open'],['Portland','Open'],
+    ['Dallas','Open'],['Miami','Open'],['Charlotte','Open'],['San Diego','Open']
+  ];
+  const track=document.getElementById('tickerTrack');
+  if(track){
+    const run=tickerCities.map(([c,s])=>'<span class="tk '+s.toLowerCase()+'">'+c+' <b>'+s+'</b></span>').join('');
+    track.innerHTML=run+run; // duplicated for a seamless loop
+  }
+
+  // faq accordion
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.setAttribute('type','button');
+    q.setAttribute('aria-expanded','false');
+    q.addEventListener('click',()=>{
+      const item=q.parentElement;
+      const a=item.querySelector('.faq-a');
+      const open=item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o=>{
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight=null;
+        o.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      });
+      if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';q.setAttribute('aria-expanded','true')}
+    });
+  });
+
+  // territory checker
+  const taken={'kansas city':'Kansas City','kc':'Kansas City','kcmo':'Kansas City','boston':'Boston'};
+  const input=document.getElementById('cityInput');
+  const result=document.getElementById('result');
+  const btn=document.getElementById('checkBtn');
+  function check(){
+    const v=input.value.trim().toLowerCase().replace(/\s+/g,' ');
+    if(!v){result.className='result';return}
+    result.className='result show';
+    // force reflow so the transition replays
+    void result.offsetWidth;
+    if(taken[v]){
+      result.classList.add('taken');
+      result.innerHTML='<span class="dot"></span>'+taken[v]+' is claimed. This market is closed.'
+        +' <a class="claim-link" href="/intake?city='+encodeURIComponent(taken[v])+'&waitlist=1">Ask about the waitlist →</a>';
+    }else{
+      result.classList.add('open');
+      const city=cap(input.value.trim());
+      result.innerHTML='<span class="dot"></span>'+city+' is open. The seat is available to claim.'
+        +' <a class="claim-link" href="/intake?city='+encodeURIComponent(city)+'">Claim it now →</a>';
+    }
+  }
+  function cap(s){return s.replace(/\b\w/g,c=>c.toUpperCase())}
+  btn.addEventListener('click',check);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')check()});
+</script>
+</body>
+</html>

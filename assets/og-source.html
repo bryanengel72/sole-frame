@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b0e14;--panel:#151821;--paper:#f8fafc;--paper-dim:#94a3b8;--paper-faint:#5c6a7e;
+    --signal:#00e5ff;--signal-2:#7df3ff;--line:rgba(248,250,252,0.08);
+    --display:"Outfit",sans-serif;--sans:"Inter",system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1200px;height:630px;overflow:hidden}
+  body{
+    background:var(--ink);color:var(--paper);font-family:var(--sans);position:relative;
+    -webkit-font-smoothing:antialiased;
+  }
+  .glow{position:absolute;inset:0;background:
+    radial-gradient(880px 540px at 82% 14%,rgba(0,229,255,.10),transparent 60%),
+    radial-gradient(700px 700px at 8% 106%,rgba(0,229,255,.05),transparent 55%);}
+  .grid{position:absolute;inset:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:60px 60px;
+    -webkit-mask-image:radial-gradient(circle at 66% 36%,black,transparent 76%);}
+  .frame{position:absolute;inset:40px}
+  .frame span{position:absolute;width:34px;height:34px;border:1.5px solid var(--signal);opacity:.6}
+  .frame span:nth-child(1){top:0;left:0;border-right:none;border-bottom:none}
+  .frame span:nth-child(2){top:0;right:0;border-left:none;border-bottom:none}
+  .frame span:nth-child(3){bottom:0;left:0;border-right:none;border-top:none}
+  .frame span:nth-child(4){bottom:0;right:0;border-left:none;border-top:none}
+  .inner{position:absolute;inset:0;padding:86px 92px;display:flex;flex-direction:column;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:14px;font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:.01em}
+  .mark{width:28px;height:28px;position:relative;flex:none}
+  .mark i{position:absolute;width:11px;height:11px;border:1.8px solid var(--signal)}
+  .mark i:nth-child(1){top:0;left:0;border-right:none;border-bottom:none}
+  .mark i:nth-child(2){top:0;right:0;border-left:none;border-bottom:none}
+  .mark i:nth-child(3){bottom:0;left:0;border-right:none;border-top:none}
+  .mark i:nth-child(4){bottom:0;right:0;border-left:none;border-top:none}
+  .eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--sans);font-size:15px;font-weight:600;
+    letter-spacing:.3em;text-transform:uppercase;color:var(--signal);margin-bottom:28px}
+  .eyebrow .sq{width:8px;height:8px;background:var(--signal)}
+  h1{font-family:var(--display);font-weight:200;font-size:74px;line-height:1.04;letter-spacing:-0.01em;max-width:17ch}
+  h1 em{font-style:normal;font-weight:600;color:var(--signal);
+    text-shadow:0 0 24px rgba(0,229,255,.6),0 0 64px rgba(0,229,255,.3)}
+  .foot{display:flex;justify-content:space-between;align-items:flex-end}
+  .foot .scar{font-family:var(--sans);font-size:20px;color:var(--paper-faint)}
+  .foot .scar b{color:var(--signal-2);font-weight:600}
+  .foot .url{font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--paper-faint)}
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="grid"></div>
+  <div class="frame"><span></span><span></span><span></span><span></span></div>
+  <div class="inner">
+    <div class="brand"><span class="mark"><i></i><i></i><i></i><i></i></span> Sole Frame</div>
+    <div>
+      <div class="eyebrow"><span class="sq"></span> One headshot photographer per city</div>
+      <h1>Be the headshot photographer your city <em>finds first.</em></h1>
+    </div>
+    <div class="foot">
+      <div class="scar">Markets are granted, not sold. <b>When yours is claimed, it's closed.</b></div>
+      <div class="url">A Signal Over Noise AI product</div>
+    </div>
+  </div>
+</body>
+</html>

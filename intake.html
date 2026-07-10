@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sole Frame — Photographer Intake</title>
+<meta name="description" content="Tell us who you are and where you shoot. We'll set up a quick call from there.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b0e14">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%230b0e14'/%3E%3Cg fill='none' stroke='%2300e5ff' stroke-width='4'%3E%3Cpath d='M17 27V17h10'/%3E%3Cpath d='M47 27V17H37'/%3E%3Cpath d='M17 37v10h10'/%3E%3Cpath d='M47 37v10H37'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b0e14;--ink-2:#11141c;--line:rgba(248,250,252,0.07);--line-strong:rgba(248,250,252,0.15);
+    --paper:#f8fafc;--paper-dim:#94a3b8;--paper-faint:#5c6a7e;--signal:#00e5ff;--signal-2:#7df3ff;
+    --display:"Outfit",sans-serif;--sans:"Inter",system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--paper);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--signal);color:var(--ink)}
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:1.5px solid var(--signal);outline-offset:3px}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+  .eyebrow{font-size:11px;font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:var(--signal)}
+
+  header{padding:70px 0 40px;text-align:center;position:relative;overflow:hidden}
+  header::after{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(700px 400px at 50% 0%,rgba(0,229,255,.10),transparent 60%)}
+  .head-inner{position:relative;z-index:1}
+  .brand{font-family:var(--display);font-size:19px;letter-spacing:.02em;display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:26px;color:var(--paper);text-decoration:none}
+  .brand .mark{width:20px;height:20px;position:relative;flex:none}
+  .brand .mark span{position:absolute;width:8px;height:8px;border:1.4px solid var(--signal)}
+  .brand .mark span:nth-child(1){top:0;left:0;border-right:none;border-bottom:none}
+  .brand .mark span:nth-child(2){top:0;right:0;border-left:none;border-bottom:none}
+  .brand .mark span:nth-child(3){bottom:0;left:0;border-right:none;border-top:none}
+  .brand .mark span:nth-child(4){bottom:0;right:0;border-left:none;border-top:none}
+  h1{font-family:var(--display);font-weight:300;font-size:clamp(32px,5.5vw,52px);line-height:1.02;letter-spacing:-0.02em;margin-top:18px}
+  h1 em{font-style:italic;color:var(--signal-2);font-weight:400}
+  header p{margin-top:20px;color:var(--paper-dim);font-size:16px;max-width:48ch;margin-left:auto;margin-right:auto}
+
+  form{padding:20px 0 100px}
+  fieldset{border:none;border-top:1px solid var(--line);padding:40px 0 8px;margin-top:24px}
+  fieldset:first-of-type{border-top:none}
+  legend{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:-0.01em;color:var(--paper);padding-bottom:6px}
+  .legend-note{color:var(--paper-faint);font-size:13px;margin-bottom:8px}
+  .field{margin-top:24px}
+  .field label{display:block;font-size:14px;font-weight:500;letter-spacing:.01em;color:var(--paper);margin-bottom:6px}
+  .field label .req{color:var(--signal);margin-left:3px}
+  .field .hint{font-size:12.5px;color:var(--paper-faint);margin-bottom:10px;line-height:1.5}
+  input[type=text],input[type=url],textarea{
+    width:100%;background:var(--ink-2);border:1px solid var(--line-strong);border-radius:3px;
+    color:var(--paper);font-family:var(--sans);font-size:15px;padding:13px 14px;outline:none;transition:border-color .25s ease;
+  }
+  input:focus,textarea:focus{border-color:var(--signal)}
+  input::placeholder,textarea::placeholder{color:var(--paper-faint)}
+  textarea{resize:vertical;min-height:84px;line-height:1.6}
+  .checks{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .check{display:flex;align-items:center;gap:9px;border:1px solid var(--line-strong);border-radius:3px;padding:11px 16px;cursor:pointer;transition:border-color .25s ease,background .25s ease;font-size:14px}
+  .check:hover{border-color:var(--signal)}
+  .check input{accent-color:var(--signal);width:16px;height:16px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .actions{margin-top:44px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  button{
+    font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--ink);background:var(--signal);border:1px solid var(--signal);padding:16px 34px;border-radius:2px;cursor:pointer;transition:all .3s ease;
+  }
+  button:hover:not(:disabled){background:var(--signal-2);border-color:var(--signal-2);transform:translateY(-2px)}
+  button:disabled{opacity:.5;cursor:default}
+  .status{font-size:14px;color:var(--paper-dim)}
+  .status.err{color:#e6a5a5}
+
+  .done{display:none;text-align:center;padding:80px 0 120px}
+  .done.show{display:block}
+  .done .eyebrow{display:block;margin-bottom:20px}
+  .done h2{font-family:var(--display);font-weight:300;font-size:clamp(30px,5vw,46px);line-height:1.05;letter-spacing:-0.02em}
+  .done h2 em{font-style:italic;color:var(--signal-2)}
+  .done p{margin-top:22px;color:var(--paper-dim);font-size:16px;max-width:44ch;margin-left:auto;margin-right:auto}
+
+  /* signal layer — Signal Over Noise AI brand */
+  h1{font-weight:200}
+  h1 em,.done h2 em{font-style:normal;font-weight:600;color:var(--signal);text-shadow:0 0 18px rgba(0,229,255,.5)}
+  .brand{font-weight:600}
+  legend{font-weight:500}
+  .eyebrow::before{content:"";display:inline-block;width:6px;height:6px;background:var(--signal);margin-right:12px;vertical-align:2px}
+  button{border-radius:8px;font-weight:600;color:#04141a;box-shadow:0 0 22px rgba(0,229,255,.2)}
+  input[type=text],input[type=url],textarea{border-radius:8px}
+  .check{border-radius:8px}
+  .check input{accent-color:var(--signal)}
+
+  @media(max-width:560px){.grid2{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap head-inner">
+    <a class="brand" href="/"><span class="mark"><span></span><span></span><span></span><span></span></span> Sole Frame</a>
+    <span class="eyebrow">Photographer intake</span>
+    <h1>Tell us who you are. <em>We'll take it from there.</em></h1>
+    <p>Just enough to set up a quick call about your market. The deeper stuff — your voice, your topics — we'll get into when we talk. Two minutes, tops.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <form id="intakeForm" novalidate>
+    <!-- honeypot: bots fill this, humans never see it -->
+    <div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+
+    <fieldset>
+      <legend>You</legend>
+      <div class="grid2">
+        <div class="field">
+          <label>Your name <span class="req">*</span></label>
+          <input type="text" name="photographerName" required placeholder="Jane Doe">
+        </div>
+        <div class="field">
+          <label>Business name <span class="req">*</span></label>
+          <input type="text" name="businessName" required placeholder="Jane Doe Photography">
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="field">
+          <label>Email <span class="req">*</span></label>
+          <input type="email" name="email" required placeholder="jane@janedoephoto.com">
+        </div>
+        <div class="field">
+          <label>Phone</label>
+          <input type="tel" name="phone" placeholder="(555) 555-5555">
+        </div>
+      </div>
+      <div class="field">
+        <label>What you shoot <span class="req">*</span></label>
+        <input type="text" name="specialty" required placeholder="headshot and personal branding photography">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Your market</legend>
+      <div class="field">
+        <label>Home base / studio location <span class="req">*</span></label>
+        <input type="text" name="homeMarket" required placeholder="Olathe, KS (studio)">
+      </div>
+      <div class="field">
+        <label>Booking link</label>
+        <div class="hint">Where clients go to book — your website or booking page.</div>
+        <input type="url" name="bookingLink" placeholder="https://...">
+      </div>
+      <div class="field">
+        <label>Anything else you'd like us to know before we talk?</label>
+        <div class="hint">Optional. Whatever feels relevant — we'll get into the details on the call.</div>
+        <textarea name="notes"></textarea>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button type="submit" id="submitBtn">Request a call</button>
+      <span class="status" id="status"></span>
+    </div>
+  </form>
+</div>
+
+<div class="wrap done" id="done">
+  <span class="eyebrow">Received</span>
+  <h2>Got it. Let's <em>talk next.</em></h2>
+  <p>Your answers are in. We'll reach out to set up a quick call about your market — the engine gets tuned to your voice once we've talked and you're locked in.</p>
+</div>
+
+<script>
+  const form=document.getElementById('intakeForm');
+  const btn=document.getElementById('submitBtn');
+  const status=document.getElementById('status');
+
+  // pre-fill home market if the availability checker passed a city along
+  const cityParam=new URLSearchParams(window.location.search).get('city');
+  if(cityParam){form.elements['homeMarket'].value=cityParam;}
+
+  form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    status.className='status';status.textContent='';
+
+    // required check
+    const required=['photographerName','businessName','email','specialty','homeMarket'];
+    for(const name of required){
+      if(!form.elements[name].value.trim()){
+        status.className='status err';
+        status.textContent='Please fill in your name, business, email, what you shoot, and home base.';
+        form.elements[name].focus();
+        return;
+      }
+    }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.elements['email'].value.trim())){
+      status.className='status err';
+      status.textContent='That email doesn\'t look right — mind double-checking it?';
+      form.elements['email'].focus();
+      return;
+    }
+
+    const fd=new FormData(form);
+    const data={};
+    for(const [k,v] of fd.entries()){data[k]=v;}
+
+    btn.disabled=true;status.className='status';status.textContent='Sending…';
+    try{
+      const res=await fetch('/api/intake',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      if(!res.ok){const t=await res.text();throw new Error(t||('HTTP '+res.status));}
+      form.style.display='none';
+      document.querySelector('header').style.display='none';
+      document.getElementById('done').classList.add('show');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }catch(err){
+      btn.disabled=false;
+      status.className='status err';
+      status.textContent='Something went wrong sending that. Try again, or email us.';
+      console.error(err);
+    }
+  });
+</script>
+</body>
+</html>

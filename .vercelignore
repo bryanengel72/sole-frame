@@ -1,0 +1,8 @@
+# Keep the engine, client data, and internal docs OUT of the public deploy.
+# Only the landing page (index.html), the intake form (intake.html), and the
+# serverless function (api/) should ship.
+engine/
+clients/
+.claude/
+assets/
+*.md
