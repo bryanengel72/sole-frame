@@ -379,6 +379,27 @@
   .tk b{font-weight:600}
   .tk.open b{text-shadow:0 0 12px rgba(0,229,255,.45)}
 
+  /* ---------- ADD-ONS ---------- */
+  .addons-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:64px}
+  .addon-card{padding:40px 38px 38px}
+  .addon-card h3{font-family:var(--display);font-weight:500;font-size:24px;letter-spacing:-0.01em;margin:20px 0 14px}
+  .addon-card p{color:var(--paper-dim);font-size:15px;line-height:1.65}
+  .addon-card .incl{margin:26px 0 0}
+  .addon-card .price-note{margin-top:24px}
+  .addon-cta{margin-top:28px;display:inline-block}
+
+  .tiers{border-top:1px solid var(--line);padding-top:60px}
+  .tiers-head{margin-bottom:36px}
+  .tiers-head h3{font-family:var(--display);font-weight:300;font-size:26px;letter-spacing:-0.01em;margin-top:14px}
+  .tiers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .tier{background:var(--ink);padding:32px 26px;display:flex;flex-direction:column;min-height:210px}
+  .tier.featured{background:var(--ink-2);position:relative}
+  .tier.featured::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--signal);box-shadow:0 0 10px var(--signal)}
+  .tier-name{font-family:var(--display);font-weight:600;font-size:15px;color:var(--paper);margin-bottom:12px}
+  .tier.featured .tier-name{color:var(--signal-2)}
+  .tier p{color:var(--paper-dim);font-size:13.5px;line-height:1.55;flex:1}
+  .tier-price{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.06em;color:var(--signal)}
+
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:900px){
     .wrap{padding:0 22px}
@@ -391,9 +412,12 @@
     .hero-foot{position:static;margin-top:60px;flex-direction:column;align-items:flex-start;gap:12px}
     header{min-height:auto}
     .hero-frame{display:none}
+    .addons-grid{grid-template-columns:1fr}
+    .tiers-grid{grid-template-columns:1fr 1fr}
   }
   @media(max-width:520px){
     .steps{grid-template-columns:1fr}
+    .tiers-grid{grid-template-columns:1fr}
     .checker-field{flex-direction:column}
     .checker button{padding:15px}
     nav .nav-cta{display:none}
@@ -476,6 +500,73 @@
         <div class="num">06</div>
         <h3>The exclusivity</h3>
         <p>One headshot photographer per city. The single feature no software company will ever sell you, because it only works if it's rare.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="addons">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Optional add-ons</span>
+      <h2>The engine is the core. <em>These extend it.</em></h2>
+      <p>The content engine is the core. These two add-ons extend it when you are ready to grow faster: one adds motion, one adds hands-free distribution. Add either, both, or neither.</p>
+    </div>
+    <div class="addons-grid">
+      <div class="addon-card price-card reveal">
+        <div class="price-tag">Powered by Higgsfield</div>
+        <h3>Add Motion to Your Brand</h3>
+        <p>Short-form video is the fastest-growing format on every platform, and it is where most photographers still are not competing. This add-on brings AI-assisted video into your content mix: branded promo clips, animated intros, and short vertical pieces built to match your studio's look, without a videographer, a shoot day, or an editing suite.</p>
+        <ul class="incl">
+          <li>Short-form branded video clips, produced per project</li>
+          <li>Vertical formats sized for Reels, LinkedIn video, and Shorts</li>
+          <li>Motion pieces that match your studio's visual style</li>
+          <li>No shoot day, no gear, no editing software required</li>
+        </ul>
+        <div class="price-note"><span class="pn-mark"></span><span>Priced per deliverable. <b>PRICE_PLACEHOLDER</b></span></div>
+        <a href="#claim" class="btn-primary addon-cta">Ask about video</a>
+      </div>
+      <div class="addon-card price-card reveal">
+        <div class="price-tag">Powered by Blotato</div>
+        <h3>Your Content, Published for You</h3>
+        <p>The content engine already writes your posts in your voice. This add-on connects that output to automated publishing, so approved posts go out to Instagram, Facebook, and LinkedIn on schedule, without you copying and pasting into every app. You approve. It publishes.</p>
+        <ul class="incl">
+          <li>Automated publishing and scheduling to Instagram, Facebook, and LinkedIn</li>
+          <li>Every post gated behind your explicit approval, no surprises</li>
+          <li>Scheduled posting so your feed stays consistent without daily effort</li>
+          <li>Published links tracked automatically, so you always know what went out</li>
+        </ul>
+        <div class="price-note"><span class="pn-mark"></span><span>Requires a separate Blotato subscription plus one-time connection setup we handle. <b>PRICE_PLACEHOLDER</b></span></div>
+        <a href="#claim" class="btn-primary addon-cta">Ask about distribution</a>
+      </div>
+    </div>
+
+    <div class="tiers reveal">
+      <div class="tiers-head">
+        <span class="eyebrow">At a glance</span>
+        <h3>Four ways to run it.</h3>
+      </div>
+      <div class="tiers-grid">
+        <div class="tier">
+          <div class="tier-name">Core</div>
+          <p>The Content Engine. SEO and AEO optimized blogs and social content in your voice, tracked end to end.</p>
+          <div class="tier-price">PRICE_PLACEHOLDER</div>
+        </div>
+        <div class="tier">
+          <div class="tier-name">Core + Video</div>
+          <p>Everything in Core, plus AI-assisted short-form video.</p>
+          <div class="tier-price">PRICE_PLACEHOLDER</div>
+        </div>
+        <div class="tier">
+          <div class="tier-name">Core + Distribution</div>
+          <p>Everything in Core, plus hands-free automated publishing.</p>
+          <div class="tier-price">PRICE_PLACEHOLDER</div>
+        </div>
+        <div class="tier featured">
+          <div class="tier-name">Full Studio</div>
+          <p>Core, video, and distribution together. The complete operation: written, filmed, and published.</p>
+          <div class="tier-price">PRICE_PLACEHOLDER</div>
+        </div>
       </div>
     </div>
   </div>
