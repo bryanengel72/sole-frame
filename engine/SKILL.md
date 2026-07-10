@@ -8,8 +8,9 @@ description: >
   "check for dupes", "{{CITY}} headshot blog", "{{PHOTOGRAPHER NAME}} blog", {{2-3 SERVICE TRIGGER
   PHRASES FROM THIS CLIENT'S PILLARS §5}}, "city expansion blog", "write my Google Business
   Profile posts", "GBP posts", "Google posts", "update my Google profile", "seed my GBP Q&A",
-  or any time the client wants to publish to their website, post to Google, or track a post.
-  Always use this skill -- do not freeform it.
+  "set up my profile", "onboard me", "let's get started", "fill out my profile", or any time the
+  client wants to publish to their website, post to Google, set up their account, or track a
+  post. Always use this skill -- do not freeform it.
 compatibility: "Requires Notion MCP"
 ---
 
@@ -76,19 +77,61 @@ If any reference file states a different number, THIS TABLE WINS.
 
 ---
 
+## Step 0: First-Run Onboarding (only if the profile is unfilled)
+
+**Check client-profile.md before anything else, every invocation.** If it still contains
+unfilled `<< >>` placeholders, this is a fresh copy of the template, not a completed client
+profile. Do not attempt to write a post, GBP content, or anything else — run onboarding instead.
+
+This replaces the old manual step where the operator read a Notion intake row and hand-typed it
+into the profile. Claude runs the interview directly and fills the file as it goes.
+
+1. **Say up front** this takes about 20–30 minutes and can be paused and resumed anytime — nothing
+   is lost between sessions since answers save to the file as each section completes.
+2. **Ask the questions from [intake-questionnaire.md](intake-questionnaire.md), one section at a
+   time, conversationally** — not a rigid form dump. Identity → Geography → Session model →
+   Credential → Pillars → Audience clusters → Voice anchors → Google Business Profile.
+   - Follow up the way a real interviewer would. Most people give 3 strong pillars and need
+     coaching toward the other two (intake-questionnaire.md Q10) — don't accept a thin answer,
+     help shape it.
+   - If §9 (GBP) answers come back thin — no listing yet, unsure of category — that's fine; note
+     it and move on. It only blocks gbp-engine.md Mode D later, not onboarding itself.
+3. **Write each section into client-profile.md as it's confirmed**, replacing the `<< >>`
+   placeholders with Edit — don't wait until the end. If the conversation is interrupted, the next
+   run picks up from whatever's still unfilled.
+4. **When all nine sections are filled**, generate `voice-persona.md` and `topic-bank.md` per
+   ONBOARDING.md Step 4.
+5. **Show the client voice-persona.md and ask directly: "Does this sound like you? What would
+   you actually say differently?"** Apply corrections before treating onboarding as done. This is
+   the human-approval checkpoint from ONBOARDING.md — now the client gives it directly instead of
+   it being relayed through the operator.
+6. **Flag the one step this can't do alone:** the Notion Blog Tracker (ONBOARDING.md Step 3)
+   needs a database created and its data source ID pasted into profile §7. If Notion MCP tools are
+   available in this context, create it and fill §7 directly. If not, tell the client/operator
+   this step is still manual.
+
+**Where this fits the pipeline:** the Notion intake *form* is still useful as lightweight
+pre-payment lead capture (New → Contacted → Invoice Sent → Paid) — you don't want a 30-minute
+interview before someone's paid. This conversational onboarding is the **Paid → Profile Built**
+step. If the client already answered some questions on the form, skip those and only ask what's
+still missing — don't make them repeat themselves.
+
+---
+
 ## Quick Start
 
-0. Load client-profile.md AND LEARNINGS.md (client + engine). Apply active rules to everything below.
-1. Collect topic, keyword, audience/city; determine pillar vs. cluster (Step 1)
-2. Check for duplicate topics (Step 2)
-3. Write the post — pillar or cluster format (Step 3)
-4. Deliver post with metadata block + 5 A/B title variants (Step 4)
-5. Generate the Content Pack — social, email, FAQ, image brief (Step 4a)
-6. Generate Internal Linking suggestions (Step 4b)
-7. Deliver Pillar Map update (Step 4c)
-8. Offer a Google Business Profile post from this blog, or run GBP on request (Step 4d)
-9. Log to Notion or deliver copyable metadata (Step 5)
-10. Capture feedback and heal (Step 6)
+0. First run only: if the profile is unfilled, run Step 0 (onboarding) instead of the below.
+1. Load client-profile.md AND LEARNINGS.md (client + engine). Apply active rules to everything below.
+2. Collect topic, keyword, audience/city; determine pillar vs. cluster (Step 1)
+3. Check for duplicate topics (Step 2)
+4. Write the post — pillar or cluster format (Step 3)
+5. Deliver post with metadata block + 5 A/B title variants (Step 4)
+6. Generate the Content Pack — social, email, FAQ, image brief (Step 4a)
+7. Generate Internal Linking suggestions (Step 4b)
+8. Deliver Pillar Map update (Step 4c)
+9. Offer a Google Business Profile post from this blog, or run GBP on request (Step 4d)
+10. Log to Notion or deliver copyable metadata (Step 5)
+11. Capture feedback and heal (Step 6)
 
 **GBP-only requests** (e.g. "write my Google posts for this week") skip Steps 1–4c and go
 straight to Step 4d — see references/gbp-engine.md for the four modes.
@@ -295,6 +338,7 @@ recurring, or outcome-backed signals become rules.
 | File | Per-client? | When to read |
 |---|---|---|
 | [client-profile.md](client-profile.md) | **YES — the client** | First, every time. |
+| [intake-questionnaire.md](intake-questionnaire.md) | Shared engine | Step 0 only — first-run onboarding. |
 | [LEARNINGS.md](LEARNINGS.md) | **YES — heals per client** (+ engine copy) | First, every time (apply rules) and last (capture). |
 | [references/voice-rules.md](references/voice-rules.md) | Shared engine | Read first before writing. Anti-AI rules, banned words, self-audit. |
 | [references/voice-persona.md](references/voice-persona.md) | **Generated per client** | With voice-rules. This client's persona and example openers. |
