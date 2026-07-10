@@ -35,26 +35,45 @@ save time once payment lands), fine, but treat that as speculative work until Pa
 
 ---
 
-## Step 1 — Intake (form or interview)
+## Step 1 — Intake (three ways to collect it)
 
-**Form (preferred, stored):** send the photographer the **Sole Frame — Client Intake** Notion
-form. Their submission becomes one row in the intake database — that row is the single source of
-truth for this client. To build, read the row via Notion and proceed to Step 2.
+There are now three ways a client's answers land in their intake row. All three write to the
+same **Sole Frame — Client Intake** Notion database, matched by email, so they can be mixed —
+someone can submit the short form, then the deep form, and it's one row, not three.
+
+**1. Short form (`intake.html`, public, pre-payment):** lightweight lead capture — name,
+business, email, specialty, home market, booking link. This is what's linked from the main site.
+Gets a row into the pipeline at **New**. Does not collect pillars, voice, or GBP.
+
+**2. Deep form (`onboarding.html`, private, post-payment) — send this once a client is Paid:**
+self-serve replacement for the live interview. Covers everything the interview does — market
+detail, session model, credential, all five pillars, voice anchors, and GBP (§9) — in one
+sitting, 15–20 minutes. `POST /api/onboarding` finds the existing row by email and **updates it
+in place** (never overwrites a filled field with a blank one, and never regresses Onboarding
+Status backward if the client is already further along). If no matching row exists, it creates
+one. On success it advances the row to **Profile Built**. Link to send: `/onboarding.html`, or
+`/onboarding.html?email=jane@...` to pre-fill.
+- Pro: scales without your time; client answers in their own words, no transcription step.
+- Con: no live coaching — if their pillar or voice answers come back thin, you won't catch it in
+  the moment the way you would on a call. Skim the row after submission; follow up by email or a
+  short call if anything's too generic (especially the voice-anchor fields — thin answers there
+  produce generic-sounding posts).
+
+**3. Interview (fallback, or when depth needs live coaching):** ask the questions live (see
+intake-questionnaire.md), fill the row yourself. Same fields as the deep form.
+
+**GBP (§9) note:** the deep form and the underlying database both have all 6 GBP columns (GBP
+Listing URL, GBP Primary Category, GBP Services, GBP Standing Offers, GBP Photo Categories, GBP
+Attributes). The short-form's Notion **Form view** does not have them toggled on — that's fine,
+since §9 is meant to come from the deep form or interview, not the pre-payment lead form.
+
 - Intake database: https://app.notion.com/p/11b5d869da1448eeabbd69570c4f52c7
-- Intake data source ID (read submissions from here): `3f371f59-fc1c-4b96-9c0a-5937a5679015`
-- Form fields map 1:1 to the profile; the DB also has internal pipeline fields (Onboarding
-  Status, Skill Slug, Blog Tracker Data Source ID) that the form hides.
-  **The GBP (§9) columns exist on the database** (GBP Listing URL, GBP Primary Category,
-  GBP Services, GBP Standing Offers, GBP Photo Categories, GBP Attributes) — but Notion Form
-  views don't auto-add new columns. Open the form in Notion and toggle these 6 fields on before
-  relying on self-serve intake to capture §9; until then, fall back to the interview.
+- Intake data source ID (read rows from here): `3f371f59-fc1c-4b96-9c0a-5937a5679015`
 - **Reading submissions:** use `notion-fetch` (by row ID/URL) or `notion-search` (scoped to the
   data source). The SQL `notion-query-data-sources` tool needs a Notion Business+AI plan and is
   NOT available on the current plan — don't rely on it for dup-detection or the monthly mining pass.
 
-**Interview (fallback):** ask the questions live (see intake-questionnaire.md). Same fields.
-
-Either way you need:
+Whichever path(s) a client's row came through, you need:
 - Name, business name, specialty, booking link
 - Home market + county + metro, and the 5–6 suburbs they want to rank in (with a landmark each)
 - Session types they offer and any they never do
