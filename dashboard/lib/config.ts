@@ -21,6 +21,12 @@ export type ClientConfig = {
   notionDatabaseId: string | null;
   /** Whether the server-side Notion token is present. Never the token itself. */
   hasNotionToken: boolean;
+  /**
+   * Serves built-in sample content instead of reading Notion. For sales demos
+   * and client previews before a tracker is connected. Never reads or needs
+   * NOTION_TOKEN when true.
+   */
+  demoMode: boolean;
 };
 
 export function getClientConfig(): ClientConfig {
@@ -37,6 +43,7 @@ export function getClientConfig(): ClientConfig {
     pillars: pillars.length > 0 ? pillars : null,
     notionDatabaseId: process.env.NOTION_BLOG_DB_ID?.trim() || null,
     hasNotionToken: Boolean(process.env.NOTION_TOKEN?.trim()),
+    demoMode: process.env.DASHBOARD_DEMO_MODE?.trim().toLowerCase() === "true",
   };
 }
 

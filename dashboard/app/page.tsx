@@ -1,4 +1,5 @@
 import { getClientConfig } from "@/lib/config";
+import { DEMO_PILLARS, DEMO_TRACKER_DATA } from "@/lib/demo-data";
 import {
   computeGbpState,
   computeTotals,
@@ -24,14 +25,24 @@ export default async function DashboardPage() {
   const config = getClientConfig();
 
   const configured = config.hasNotionToken && Boolean(config.notionDatabaseId);
-  const result = configured ? await fetchTracker() : null;
+  const result = config.demoMode
+    ? null
+    : configured
+      ? await fetchTracker()
+      : null;
 
   return (
     <div className="mx-auto w-full max-w-6xl flex-1 px-5 py-10 sm:px-8">
-      <Header config={config} live={Boolean(result?.ok)} />
+      <Header config={config} live={Boolean(result?.ok)} demo={config.demoMode} />
 
       <main className="mt-8 space-y-6">
-        {!configured ? (
+        {config.demoMode ? (
+          <Dashboard
+            posts={DEMO_TRACKER_DATA.posts}
+            hasGbpField={DEMO_TRACKER_DATA.hasGbpField}
+            configuredPillars={config.pillars ?? DEMO_PILLARS}
+          />
+        ) : !configured ? (
           <SetupState
             hasToken={config.hasNotionToken}
             hasDatabaseId={Boolean(config.notionDatabaseId)}
@@ -49,8 +60,9 @@ export default async function DashboardPage() {
 
       <footer className="mt-14 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-5 text-[11px] text-paper-faint">
         <span>
-          Reads live from the Notion blog tracker. This dashboard never edits
-          content.
+          {config.demoMode
+            ? "Sample content shown for preview purposes. The live version reads directly from your Notion blog tracker."
+            : "Reads live from the Notion blog tracker. This dashboard never edits content."}
         </span>
         <span>A Signal Over Noise AI product</span>
       </footer>
