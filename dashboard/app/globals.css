@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/*
+  Signal Over Noise brand tokens. --signal is overridden per client from
+  config in the root layout, so components only ever reference the variable.
+*/
+:root {
+  --ink: #0b0e14;
+  --ink-2: #11141c;
+  --panel: #151821;
+  --panel-2: #1a1e29;
+  --line: rgba(248, 250, 252, 0.07);
+  --line-strong: rgba(248, 250, 252, 0.15);
+  --paper: #f8fafc;
+  --paper-dim: #94a3b8;
+  --paper-faint: #5c6a7e;
+  --signal: #00e5ff;
+  --good: #34d399;
+  --warn: #fbbf24;
+  --alert: #f87171;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-paper: var(--paper);
+  --color-paper-dim: var(--paper-dim);
+  --color-paper-faint: var(--paper-faint);
+  --color-signal: var(--signal);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+  --color-alert: var(--alert);
+  --font-display: var(--font-outfit), sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+}
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--signal);
+  color: var(--ink);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 1.5px solid var(--signal);
+  outline-offset: 3px;
+}
