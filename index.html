@@ -201,20 +201,35 @@
   .sec-head p{margin-top:22px;color:var(--paper-dim);font-size:17px;max-width:50ch}
 
   /* ---------- SERVICES ---------- */
-  .services{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-  .svc{
-    background:var(--ink);padding:44px 40px;position:relative;
-    transition:background .5s ease;min-height:230px;display:flex;flex-direction:column;
+  .stack{position:relative;padding-bottom:6vh}
+  .stack .card{
+    --p:0; --e:0;
+    position:sticky;top:110px;
+    background:var(--panel);
+    border:1px solid var(--line-strong);
+    border-radius:18px;
+    padding:46px 44px 48px;
+    min-height:330px;
+    margin-bottom:26px;
+    overflow:hidden;
+    transform-origin:center bottom;
+    box-shadow:0 -1px 0 rgba(0,0,0,.4), 0 24px 60px -30px rgba(0,0,0,.9);
+    transform:perspective(1100px)
+      rotateX(calc(var(--p)*16deg - var(--e)*8deg))
+      scale(calc(1 - var(--p)*0.08));
+    transition:transform .1s linear;
+    will-change:transform;
   }
-  .svc:hover{background:var(--ink-2)}
-  .svc .num{font-family:var(--display);font-size:13px;color:var(--signal);letter-spacing:.1em;margin-bottom:26px}
-  .svc h3{font-family:var(--display);font-weight:400;font-size:23px;letter-spacing:-0.01em;margin-bottom:14px}
-  .svc p{color:var(--paper-dim);font-size:15px;line-height:1.6}
-  .svc .glint{
-    position:absolute;top:0;left:0;height:2px;width:0;background:var(--signal);
-    transition:width .6s cubic-bezier(.2,.7,.2,1);
-  }
-  .svc:hover .glint{width:100%}
+  .stack .card::before{content:"";position:absolute;left:0;top:0;height:2px;width:64px;
+    background:linear-gradient(90deg,var(--signal),transparent)}
+  .stack .card::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+    background:linear-gradient(180deg,rgba(4,6,10,.95),rgba(4,6,10,.65));
+    opacity:calc(var(--p)*0.85);
+    transition:opacity .1s linear}
+  .stack .num{font-family:var(--display);font-size:14px;letter-spacing:.14em;color:var(--signal);font-weight:500}
+  .stack h3{font-family:var(--display);font-weight:400;font-size:clamp(23px,3.2vw,32px);margin-top:20px;letter-spacing:-.01em}
+  .stack .card p{margin-top:18px;color:var(--paper-dim);font-size:clamp(15px,1.8vw,17px);line-height:1.65;max-width:56ch}
+  .stack .tag{position:absolute;right:40px;top:48px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-faint)}
 
   /* ---------- PROCESS ---------- */
   .process{border-top:1px solid var(--line)}
@@ -392,7 +407,7 @@
   @media(max-width:900px){
     .wrap{padding:0 22px}
     section{padding:80px 0}
-    .services{grid-template-columns:1fr}
+    .stack .card{top:86px;padding:34px 26px 36px;min-height:280px;border-radius:14px}
     .steps{grid-template-columns:1fr 1fr;gap:44px 30px}
     .step:not(:last-child)::after{display:none}
     .vault-inner{grid-template-columns:1fr;gap:44px}
@@ -407,10 +422,13 @@
     .checker-field{flex-direction:column}
     .checker button{padding:15px}
     nav .nav-cta{display:none}
+    .stack .tag{display:none}
   }
   @media(prefers-reduced-motion:reduce){
     *{transition:none!important;animation:none!important}
     .reveal{opacity:1;transform:none}
+    .stack .card{transform:none!important}
+    .stack .card::after{opacity:0!important}
   }
 </style>
 </head>
@@ -456,47 +474,55 @@
       <h2>Not a tool. A <em>standing advantage</em> only you hold.</h2>
       <p>Eight systems working as one, built specifically around headshot photography. Each post you request runs the full engine, then compounds. Your competitors can ask a generic AI for "headshot marketing tips" and get nowhere near it.</p>
     </div>
-    <div class="services">
-      <div class="svc reveal"><span class="glint"></span>
+    <div class="stack" id="engineStack">
+      <article class="card">
+        <span class="tag">Core</span>
         <div class="num">01</div>
         <h3>The content engine</h3>
         <p>Search and answer-engine optimized posts written in your voice, aimed at your city and the exact clients booking headshots: job seekers, executives, agents, actors, and LinkedIn profiles that need to look sharp.</p>
-      </div>
-      <div class="svc reveal"><span class="glint"></span>
+      </article>
+      <article class="card">
+        <span class="tag">Core</span>
         <div class="num">02</div>
         <h3>The strategy layer</h3>
         <p>A five-pillar architecture built around headshot demand — corporate teams, personal branding, actor and model shoots, LinkedIn refreshes, and seasonal booking pushes — so content stops scattering and starts stacking.</p>
-      </div>
-      <div class="svc reveal"><span class="glint"></span>
+      </article>
+      <article class="card">
+        <span class="tag">Memory</span>
         <div class="num">03</div>
         <h3>Duplicate protection</h3>
         <p>The engine remembers everything you've published. You never repeat yourself, and every new post earns its place in the library.</p>
-      </div>
-      <div class="svc reveal"><span class="glint"></span>
+      </article>
+      <article class="card">
+        <span class="tag">Distribution</span>
         <div class="num">04</div>
         <h3>The content pack</h3>
         <p>Every blog auto-generates a LinkedIn post, Instagram caption, Facebook post, email, and an FAQ block. One request, a week of presence.</p>
-      </div>
-      <div class="svc reveal"><span class="glint"></span>
+      </article>
+      <article class="card">
+        <span class="tag">Local search</span>
         <div class="num">05</div>
         <h3>The Google Business Profile pack</h3>
         <p>Every post also generates three Google Business Profile variants — an update, an educational angle, and a booking push — each with a suggested image name. Local search gets fed as automatically as your blog.</p>
-      </div>
-      <div class="svc reveal"><span class="glint"></span>
+      </article>
+      <article class="card">
+        <span class="tag">Integrity</span>
         <div class="num">06</div>
         <h3>The trust layer</h3>
         <p>The engine never invents a client story or a number about your business. Real experiences come from you, or the post runs without them. And nothing reaches Notion, let alone your site, until you've seen it and said go.</p>
-      </div>
-      <div class="svc reveal"><span class="glint"></span>
+      </article>
+      <article class="card">
+        <span class="tag">Command</span>
         <div class="num">07</div>
         <h3>The tracking system</h3>
         <p>Two private Notion workspaces — one for your blog, one for your Google posts — logging every piece, mapping your pillars, and telling you exactly what to write next. Nothing slips.</p>
-      </div>
-      <div class="svc reveal"><span class="glint"></span>
+      </article>
+      <article class="card">
+        <span class="tag">Moat</span>
         <div class="num">08</div>
         <h3>The exclusivity</h3>
         <p>One headshot photographer per city. The single feature no software company will ever sell you, because it only works if it's rare.</p>
-      </div>
+      </article>
     </div>
   </div>
 </section>
@@ -703,6 +729,31 @@
     el.style.transitionDelay=(Math.min(i%6,5)*0.06)+'s';
     io.observe(el);
   });
+
+  // engine card stack — 3D burial driven by how far the next card has climbed over this one
+  const stackCards=[...document.querySelectorAll('#engineStack .card')];
+  if(stackCards.length){
+    const pin=()=>parseFloat(getComputedStyle(stackCards[0]).top)||110;
+    const onStackScroll=()=>{
+      const PIN=pin(), vh=window.innerHeight;
+      stackCards.forEach((card,i)=>{
+        const rect=card.getBoundingClientRect();
+        let p=0,e=0;
+        if(i!==stackCards.length-1){
+          const nextTop=stackCards[i+1].getBoundingClientRect().top;
+          p=Math.max(0,Math.min(1,1-(nextTop-PIN)/(rect.height*0.95)));
+        }
+        if(rect.top-PIN>2 && i!==0){
+          e=Math.min(1,(rect.top-PIN)/(vh*0.7));
+        }
+        card.style.setProperty('--p',p.toFixed(4));
+        card.style.setProperty('--e',e.toFixed(4));
+      });
+    };
+    document.addEventListener('scroll',()=>requestAnimationFrame(onStackScroll),{passive:true});
+    window.addEventListener('resize',onStackScroll);
+    onStackScroll();
+  }
 
   // city ticker
   const tickerCities=[
