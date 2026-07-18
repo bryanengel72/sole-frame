@@ -111,10 +111,11 @@ startup founders / tech, actors & performers, healthcare / medical, real estate,
 
 - **Blog Tracker data source ID:** << create the DB and paste the data source ID — ONBOARDING.md Step 3 >>
 - **Database URL:** << https://notion.so/... >>
-- **Property schema:** Title (title), URL Slug (rich_text), Date Written (date), Topic / Keyword
-  (rich_text), Target Audience (rich_text/select), City (select — markets list §2), Status
-  (select: Draft/Published), Word Count (number), Post Type (select: Pillar/Cluster), Parent
-  Pillar (select — the five names above), Session Type (select: **Studio only** for this client),
+- **Property schema:** Title (title), Format (select: Blog Post/GBP Update/GBP Offer/GBP Event/GBP
+  Q&A — lets GBP entries share this tracker, see gbp-engine.md), URL Slug (rich_text), Date Written
+  (date), Topic / Keyword (rich_text), Target Audience (rich_text/select), City (select — markets
+  list §2), Status (select: Draft/Published), Word Count (number), Post Type (select: Pillar/Cluster),
+  Parent Pillar (select — the five names above), Session Type (select: **Studio only** for this client),
   Credential Mention (checkbox — always unchecked for this client)
 
 > Stress-test note: this client's Session Type select needs only one value (Studio). Credential

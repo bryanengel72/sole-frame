@@ -101,8 +101,10 @@ connection; if onboarding is running in the client's context, hand this step bac
 (Exception: an existing friend-of-the-house client who keeps their own Notion — leave theirs as-is.)
 
 Create a database for this client with the property schema in client-profile.md §7
-(Title, URL Slug, Date Written, Topic/Keyword, Target Audience, City [select], Status [select],
-Word Count, Post Type [select], Parent Pillar [select], Session Type [select], Credential Mention).
+(Title, Format [select], URL Slug, Date Written, Topic/Keyword, Target Audience, City [select],
+Status [select], Word Count, Post Type [select], Parent Pillar [select], Session Type [select],
+Credential Mention). The **Format** select (Blog Post / GBP Update / GBP Offer / GBP Event /
+GBP Q&A) lets GBP entries share this tracker — see references/gbp-engine.md.
 Set the City select options to the client's markets list. Paste the **data source ID** and URL
 back into profile §7. (Use `notion-create-database`; get the data source ID from the response.)
 
