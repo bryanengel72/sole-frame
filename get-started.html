@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sole Frame — Get Started</title>
-<meta name="description" content="Connect your Notion workspace and learn how to talk to your engine. Two steps, under ten minutes.">
+<meta name="description" content="Connect your Notion to Claude and learn how to talk to your engine. Two steps, under ten minutes.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0b0e14">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%230b0e14'/%3E%3Cg fill='none' stroke='%2300e5ff' stroke-width='4'%3E%3Cpath d='M17 27V17h10'/%3E%3Cpath d='M47 27V17H37'/%3E%3Cpath d='M17 37v10h10'/%3E%3Cpath d='M47 37v10H37'/%3E%3C/g%3E%3C/svg%3E">
@@ -185,7 +185,7 @@
   <div class="wrap hero-inner">
     <div class="hero-eyebrow"><span class="line"></span><span class="eyebrow">Setup</span></div>
     <h1>Two things stand between you and your first <em>post.</em></h1>
-    <p class="hero-sub">Connect your Notion workspace, then learn how to talk to your engine. Both take under ten minutes, and you only do this once.</p>
+    <p class="hero-sub">Connect your Notion to Claude, then learn how to talk to your engine. Both take under ten minutes, and you only do this once.</p>
     <div class="hero-progress">
       <div class="hp-item"><span class="n">01</span> Connect Notion</div>
       <div class="hp-item"><span class="n">02</span> Start requesting posts</div>
@@ -198,46 +198,53 @@
     <div class="sec-head">
       <span class="num">01</span>
       <h2>Connect your <em>Notion.</em></h2>
-      <p>Your engine's tracking system — duplicate protection, your pillar map, everything it remembers about what you've published — lives in a private Notion workspace that belongs to you. Claude needs permission to read and write to it. This is what a Connector does.</p>
+      <p>Your engine's tracking system — duplicate protection, your pillar map, everything it remembers about what you've published — lives in a private Notion tracker we set up for you and share to your account. It's yours to see and use, and no other client can see it. Claude needs permission to read and write to it, and that's what a Connector does.</p>
     </div>
 
     <div class="guide">
       <div class="g-step">
         <div class="k">01</div>
         <div>
-          <h3>Get a Notion workspace, if you don't have one</h3>
-          <p>Free at <a href="https://notion.so" target="_blank" rel="noopener" style="color:var(--signal)">notion.so</a>. Sign up, skip the templates, land on an empty page. That's all you need — the engine builds its own databases inside it during setup.</p>
+          <h3>Have a Notion account</h3>
+          <p>Free at <a href="https://notion.so" target="_blank" rel="noopener" style="color:var(--signal)">notion.so</a>. Sign up if you don't already have one — that's all you need. You won't build anything; the account just gives us somewhere to send your tracker.</p>
         </div>
       </div>
       <div class="g-step">
         <div class="k">02</div>
+        <div>
+          <h3>Accept your tracker invite</h3>
+          <p>We create your private tracker in our workspace and invite your Notion account to it as an editor. Accept the invite — it arrives by email and in Notion — and the tracker appears in your sidebar under <strong>Shared</strong>. It's already built, with your pillars and duplicate protection ready to go.</p>
+        </div>
+      </div>
+      <div class="g-step">
+        <div class="k">03</div>
         <div>
           <h3>Open Connectors in Claude</h3>
           <p>In Claude, go to <code class="inline">Settings → Connectors</code>. On mobile, it's under the same Settings menu. This is a list of outside tools Claude can plug into — Notion is one of them.</p>
         </div>
       </div>
       <div class="g-step">
-        <div class="k">03</div>
+        <div class="k">04</div>
         <div>
           <h3>Find Notion and connect it</h3>
           <p>Search <code class="inline">Notion</code> in the connector directory and select <strong>Connect</strong>. You'll be sent to Notion's own site to sign in and approve access — Claude never sees your Notion password, and you're approving the connection on Notion's page, not Claude's.</p>
         </div>
       </div>
       <div class="g-step">
-        <div class="k">04</div>
+        <div class="k">05</div>
         <div>
-          <h3>Choose what Claude can see</h3>
-          <p>Notion will ask which pages or the whole workspace to share. Selecting the whole workspace is simplest and is what the engine expects — it needs to create two new databases the first time it runs.</p>
+          <h3>Give Claude access to your tracker</h3>
+          <p>Notion will ask which pages to share with Claude. Make sure your Sole Frame tracker — the one we shared in step 02 — is included. That's the only page the engine needs to reach.</p>
         </div>
       </div>
       <div class="g-step">
-        <div class="k">05</div>
+        <div class="k">06</div>
         <div>
           <h3>Confirm it worked</h3>
-          <p>Back in your conversation with Claude, say the line below. If the connection is live, Claude will confirm it can see your workspace before doing anything else.</p>
+          <p>Back in your conversation with Claude, say the line below. If the connection is live, Claude will confirm it can see your tracker before doing anything else.</p>
           <div class="say">
             <label><span class="dot"></span>Say this to Claude</label>
-            <p>"Set up my Notion databases using these instructions and my client-config.md."</p>
+            <p>"Confirm you can see my Sole Frame Notion tracker."</p>
           </div>
         </div>
       </div>
@@ -313,7 +320,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">What if my Notion connection stops working? <span class="pm"></span></button>
-        <div class="faq-a"><p>Tell Claude it can't see your workspace, and it will walk you back through reconnecting via Settings → Connectors. Your existing databases and everything already logged in them are untouched.</p></div>
+        <div class="faq-a"><p>Tell Claude it can't see your tracker, and it will walk you back through reconnecting via Settings → Connectors. Your tracker and everything already logged in it are untouched.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Do I own what the engine produces? <span class="pm"></span></button>
