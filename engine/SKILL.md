@@ -106,9 +106,12 @@ into the profile. Claude runs the interview directly and fills the file as it go
    the human-approval checkpoint from ONBOARDING.md — now the client gives it directly instead of
    it being relayed through the operator.
 6. **Flag the one step this can't do alone:** the Notion Blog Tracker (ONBOARDING.md Step 3)
-   needs a database created and its data source ID pasted into profile §7. If Notion MCP tools are
-   available in this context, create it and fill §7 directly. If not, tell the client/operator
-   this step is still manual.
+   needs a database created and its data source ID pasted into profile §7. This DB must be created
+   in the **operator's (Sole Frame's) own Notion workspace**, then shared to the client as an
+   edit-**guest** — so ownership and the off-switch stay with the operator (ONBOARDING.md Step 3).
+   If this onboarding is running under the operator's Notion connection, create it and fill §7
+   directly. If it's running in the *client's* context, do NOT create it there — hand this step
+   back to the operator so the tracker doesn't land in the client's workspace.
 
 **Where this fits the pipeline:** the Notion intake *form* is still useful as lightweight
 pre-payment lead capture (New → Contacted → Invoice Sent → Paid) — you don't want a 30-minute

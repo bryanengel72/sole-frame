@@ -92,11 +92,22 @@ This is the whole per-client configuration.
 
 ## Step 3 — Create the Notion Blog Tracker
 
+**Operator step — must run under the operator's (Sole Frame's) own Notion, not the client's.**
+The tracker is created in *your* workspace so ownership, the compounding library, and the ability
+to revoke access stay with you. The client gets the tracker as a **guest** invited to their DB
+only — they can log and read their posts, but they never own it and can't see any other client's.
+Do **not** let a client-run onboarding session create this DB under the client's own Notion
+connection; if onboarding is running in the client's context, hand this step back to the operator.
+(Exception: an existing friend-of-the-house client who keeps their own Notion — leave theirs as-is.)
+
 Create a database for this client with the property schema in client-profile.md §7
 (Title, URL Slug, Date Written, Topic/Keyword, Target Audience, City [select], Status [select],
 Word Count, Post Type [select], Parent Pillar [select], Session Type [select], Credential Mention).
 Set the City select options to the client's markets list. Paste the **data source ID** and URL
 back into profile §7. (Use `notion-create-database`; get the data source ID from the response.)
+
+Then **share the DB with the client as a guest with edit access** (edit so they can log posts;
+guest so they see only their own tracker). Never add a client as a workspace member.
 
 ## Step 4 — Generate the two client files from the profile
 
