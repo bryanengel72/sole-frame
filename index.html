@@ -403,6 +403,37 @@
   .addon-card .price-note{margin-top:24px}
   .addon-cta{margin-top:28px;display:inline-block}
 
+  /* ---------- PRICING TIERS ---------- */
+  .bill-toggle{display:inline-flex;gap:4px;padding:5px;border:1px solid var(--line-strong);border-radius:12px;background:var(--ink-2)}
+  .bt-opt{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--paper-dim);background:none;border:none;border-radius:8px;padding:11px 22px;cursor:pointer;transition:all .3s ease}
+  .bt-opt.active{background:var(--signal);color:#04141a}
+  .bt-save{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);padding:3px 8px;border:1px solid var(--line-strong);border-radius:20px;transition:all .3s ease}
+  .bt-opt.active .bt-save{color:#04141a;border-color:rgba(4,20,26,.28)}
+  .bill-note{margin-top:16px;font-size:13px;color:var(--paper-faint);letter-spacing:.02em}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch;margin-top:42px}
+  .tier{display:flex;flex-direction:column;padding:44px 30px 34px}
+  .tier.featured{border-color:rgba(0,229,255,.55);box-shadow:0 0 40px -18px rgba(0,229,255,.5)}
+  .tier.featured::before{opacity:1}
+  .tier-flag{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:6px 15px;border-radius:20px;white-space:nowrap;z-index:2}
+  .tier-flag.pop{color:#04141a;background:var(--signal);box-shadow:0 0 18px rgba(0,229,255,.4)}
+  .tier-flag.limit{color:var(--signal);background:var(--ink-2);border:1px solid rgba(0,229,255,.45)}
+  .tier .price-main{font-size:46px;margin:18px 0 4px}
+  .tier .price-main small{font-size:16px}
+  .tier .incl{flex:1;margin-top:26px}
+  .tier .incl li{font-size:14px;padding:11px 0 11px 20px}
+  .tier .incl li::before{top:19px}
+  .price-amt .a,.price-per .a{display:none}
+  #pricing.annual .price-amt .m,#pricing.annual .price-per .m{display:none}
+  #pricing.annual .price-amt .a,#pricing.annual .price-per .a{display:inline}
+  .build-line{margin:40px 0 0;padding:22px 26px;border:1px solid var(--line);border-radius:12px;background:rgba(0,229,255,.04);font-size:15px;color:var(--paper-dim);display:flex;gap:13px;align-items:flex-start;line-height:1.6}
+  .build-line .pn-mark{width:6px;height:6px;flex:none;margin-top:8px;background:var(--signal);border-radius:50%;box-shadow:0 0 9px var(--signal)}
+  .build-line b{color:var(--paper);font-weight:500}
+  .pricing-support{margin-top:54px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;border-top:1px solid var(--line);padding-top:50px}
+  .pricing-support h3{font-family:var(--display);font-weight:500;font-size:26px;line-height:1.2;margin-bottom:18px;max-width:22ch}
+  .pricing-support p{color:var(--paper-dim);font-size:15px;margin-bottom:18px;line-height:1.65}
+  .pricing-support .anchor{border-left:2px solid var(--signal);padding-left:20px;margin-top:24px}
+  .pricing-support .anchor b{color:var(--paper);font-weight:400}
+
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:900px){
     .wrap{padding:0 22px}
@@ -412,6 +443,8 @@
     .step:not(:last-child)::after{display:none}
     .vault-inner{grid-template-columns:1fr;gap:44px}
     .pricing-inner{grid-template-columns:1fr;gap:44px}
+    .tiers{grid-template-columns:1fr;gap:32px}
+    .pricing-support{grid-template-columns:1fr;gap:36px}
     .hero-foot{position:static;margin-top:60px;flex-direction:column;align-items:flex-start;gap:12px}
     header{min-height:auto}
     .hero-frame{display:none}
@@ -545,7 +578,7 @@
           <li>Motion pieces that match your studio's visual style</li>
           <li>No shoot day, no gear, no editing software required</li>
         </ul>
-        <div class="price-note"><span class="pn-mark"></span><span>Requires a separate Higgsfield subscription. That cost depends on the plan you choose directly with Higgsfield. One-time setup is <b>$39</b>, which we handle.</span></div>
+        <div class="price-note"><span class="pn-mark"></span><span>Requires a separate Higgsfield subscription. That cost depends on the plan you choose directly with Higgsfield. One-time setup is <b>$159</b>, which we handle, and it is included at the Partner tier.</span></div>
         <a href="#claim" class="btn-primary addon-cta">Ask about video</a>
       </div>
       <div class="addon-card price-card reveal">
@@ -558,7 +591,7 @@
           <li>Scheduled posting so your feed stays consistent without daily effort</li>
           <li>Published links tracked automatically, so you always know what went out</li>
         </ul>
-        <div class="price-note"><span class="pn-mark"></span><span>Requires a separate Blotato subscription. That cost depends on the plan you choose directly with Blotato. One-time setup is <b>$39</b>, which we handle.</span></div>
+        <div class="price-note"><span class="pn-mark"></span><span>Requires a separate Blotato subscription. That cost depends on the plan you choose directly with Blotato. One-time setup is <b>$159</b>, which we handle, and it is included at the Partner tier.</span></div>
         <a href="#claim" class="btn-primary addon-cta">Ask about distribution</a>
       </div>
     </div>
@@ -621,7 +654,14 @@
         <div class="ct">The registry</div>
         <div class="lrow held"><span class="no">№ 001</span><span class="lcity">Kansas City</span><span class="dots"></span><span class="lst">Held</span></div>
         <div class="lrow held"><span class="no">№ 002</span><span class="lcity">Boston</span><span class="dots"></span><span class="lst">Held</span></div>
-        <div class="lrow open"><span class="no">№ 003</span><span class="lcity">Your city</span><span class="dots"></span><span class="lst">Open</span></div>
+        <div class="lrow open"><span class="no">№ 003</span><span class="lcity">Denver</span><span class="dots"></span><span class="lst">Open</span></div>
+        <div class="lrow open"><span class="no">№ 004</span><span class="lcity">Austin</span><span class="dots"></span><span class="lst">Open</span></div>
+        <div class="lrow open"><span class="no">№ 005</span><span class="lcity">Charlotte</span><span class="dots"></span><span class="lst">Open</span></div>
+        <div class="lrow open"><span class="no">№ 006</span><span class="lcity">Seattle</span><span class="dots"></span><span class="lst">Open</span></div>
+        <div class="lrow open"><span class="no">№ 007</span><span class="lcity">Phoenix</span><span class="dots"></span><span class="lst">Open</span></div>
+        <div class="lrow open"><span class="no">№ 008</span><span class="lcity">Nashville</span><span class="dots"></span><span class="lst">Open</span></div>
+        <div class="lrow open"><span class="no">№ 009</span><span class="lcity">Portland</span><span class="dots"></span><span class="lst">Open</span></div>
+        <div class="lrow open"><span class="no">№ 010</span><span class="lcity">San Diego</span><span class="dots"></span><span class="lst">Open</span></div>
       </div>
     </div>
   </div>
@@ -632,27 +672,69 @@
     <div class="sec-head reveal">
       <span class="eyebrow">Investment</span>
       <h2>One city. One seat. <em>Held for as long as it's yours.</em></h2>
+      <p>Every tier runs the full engine and produces the same quality of work. The only thing that changes is how much direct access to human strategy help is included.</p>
     </div>
-    <div class="pricing-inner">
-      <div class="price-card reveal">
-        <div class="price-tag">Founding rate · First five cities</div>
-        <div class="price-main">$350<small> build</small></div>
-        <div class="price-then">then <b>$20</b> / month — holds your seat and includes model upgrades, skill updates, and support calls: monthly for your first two months, then quarterly</div>
-        <div class="price-note"><span class="pn-mark"></span><span><b>Two of the five founding builds are claimed — three remain at $350.</b> From city six on, the build is $500.</span></div>
+
+    <div class="reveal">
+      <div class="bill-toggle" role="group" aria-label="Billing period">
+        <button type="button" class="bt-opt active" data-bill="monthly" aria-pressed="true">Monthly</button>
+        <button type="button" class="bt-opt" data-bill="annual" aria-pressed="false">Annual <span class="bt-save">2 months free</span></button>
+      </div>
+      <div class="bill-note">Annual is 10x the monthly rate, so two months are free, and it locks your seat for 12 months.</div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier price-card reveal">
+        <div class="price-tag">Self-Serve</div>
+        <div class="price-main"><span class="price-amt"><span class="m">$39</span><span class="a">$390</span></span><small class="price-per"><span class="m"> / month</span><span class="a"> / year</span></small></div>
         <ul class="incl">
-          <li><b>The full engine</b>, tuned to your voice, city, and ideal headshot clients</li>
-          <li><b>Unlimited posts on demand</b>, each with its complete content pack</li>
-          <li><b>Your private Notion tracker</b>, pillar map and duplicate protection included</li>
-          <li><b>Exclusive rights</b> to your city as the only headshot photographer on the engine, for as long as you hold the seat</li>
-          <li><b>Renewable exclusivity</b>. Lapse it, and your market reopens to the field</li>
+          <li><b>Full content engine</b>, tuned to your voice, city, and clients</li>
+          <li><b>Up to 8 posts per month</b>, each with the full content pack</li>
+          <li><b>Private Notion tracker</b>, pillar map, duplicate protection</li>
+          <li><b>Exclusive rights</b> to your city while your seat is active</li>
+          <li><b>Self-serve onboarding</b>: guided form plus recorded walkthrough</li>
+          <li><b>Email support</b>, 48-hour response</li>
+          <li>No scheduled calls</li>
         </ul>
       </div>
-      <div class="price-side reveal">
+
+      <div class="tier price-card featured reveal">
+        <span class="tier-flag pop">Most popular</span>
+        <div class="price-tag">Supported</div>
+        <div class="price-main"><span class="price-amt"><span class="m">$99</span><span class="a">$990</span></span><small class="price-per"><span class="m"> / month</span><span class="a"> / year</span></small></div>
+        <ul class="incl">
+          <li><b>Everything in Self-Serve</b>, including 8 posts per month</li>
+          <li><b>One 30-minute strategy call</b> per quarter</li>
+          <li><b>Email support</b>, 24-hour response</li>
+          <li><b>Engine updates and model upgrades</b> as they ship</li>
+        </ul>
+      </div>
+
+      <div class="tier price-card reveal">
+        <span class="tier-flag limit">Limited to 5 seats</span>
+        <div class="price-tag">Partner</div>
+        <div class="price-main"><span class="price-amt"><span class="m">$299</span><span class="a">$2,990</span></span><small class="price-per"><span class="m"> / month</span><span class="a"> / year</span></small></div>
+        <ul class="incl">
+          <li><b>Everything in Supported</b>, including 8 posts per month</li>
+          <li><b>Monthly 45-minute strategy call</b></li>
+          <li><b>Priority turnaround</b> on requests</li>
+          <li><b>Higgsfield and Blotato add-on setup</b> included</li>
+          <li><b>Proactive topic and campaign recommendations</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="build-line reveal"><span class="pn-mark"></span><span>One-time build: <b>$500 for the first five cities, $900 after.</b> Three founding builds remain. Applies to every tier.</span></div>
+
+    <div class="pricing-support">
+      <div class="reveal">
         <h3>Priced against the agency you'd otherwise hire.</h3>
-        <p>A content agency runs $500 to $2,000 a month and rarely delivers anything this specific to headshot clients in your market. None of them will ever give you exclusivity.</p>
-        <p>The $20 monthly isn't a software fee. It keeps your city locked and your engine current — calls with us monthly while you ramp up, quarterly after, plus upgrades shipped to your engine as new models and skills land. You're never running last year's AI.</p>
+        <p>A content agency runs $500 to $2,000 a month and rarely delivers anything this specific to headshot clients in your market. Sole Frame runs $39 to $299 a month depending on how much strategy help you want, and none of those agencies will ever give you exclusivity.</p>
+      </div>
+      <div class="reveal">
+        <p>The monthly isn't a software fee. Every tier locks your city and keeps your engine current. The same model upgrades and skill updates ship to all of them, so you're never running last year's AI. The tiers differ in one thing only: how much direct access to strategy help is included.</p>
         <div class="anchor">
-          <b>Time-boxed and yours.</b> Exclusivity is granted per city and renews with your seat. No perpetual lockouts, no surprises.
+          <b>Time-boxed and yours.</b> Exclusivity is granted per city, applies at every tier, and renews with your seat. No perpetual lockouts, no surprises.
         </div>
       </div>
     </div>
@@ -668,7 +750,7 @@
     <div class="reveal">
       <div class="faq-item">
         <button class="faq-q">What exactly does "exclusive" mean? <span class="pm"></span></button>
-        <div class="faq-a"><p>One headshot photographer per metro market. If you hold Boston, no other headshot photographer in Boston can license the engine. Your exact city is closed to the competition for as long as your seat is active.</p></div>
+        <div class="faq-a"><p>One headshot photographer per metro market. If you hold Boston, no other headshot photographer in Boston can license the engine. This applies at every tier, so Self-Serve holds your city exactly as firmly as Partner. Your exact city is closed to the competition for as long as your seat is active.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">What happens if I expand to another city? <span class="pm"></span></button>
@@ -684,7 +766,11 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">What happens if I stop paying? <span class="pm"></span></button>
-        <div class="faq-a"><p>Your seat closes and your market reopens to the field. Anything you already published stays yours, but the engine and the exclusivity end with the license. The monthly is what keeps your city locked.</p></div>
+        <div class="faq-a"><p>Your seat closes and your market reopens to the field when billing lapses. Annual seats hold for the full 12-month term you already paid for. If you change tiers, an upgrade takes effect immediately and a downgrade takes effect at your next renewal. Anything you already published stays yours, but the engine and the exclusivity end with the license.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What's the difference between the tiers? <span class="pm"></span></button>
+        <div class="faq-a"><p>The engine is identical at every tier, and so is the output. Same posts, same content packs, same quality. Tiers differ in one thing only: how much direct access to human strategy help and priority support is included. Self-Serve is email support with no scheduled calls, Supported adds a quarterly strategy call and faster replies, and Partner adds a monthly call, priority turnaround, and add-on setup.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">How fast can I start requesting posts? <span class="pm"></span></button>
@@ -781,6 +867,20 @@
         o.querySelector('.faq-q').setAttribute('aria-expanded','false');
       });
       if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';q.setAttribute('aria-expanded','true')}
+    });
+  });
+
+  // billing toggle (monthly / annual)
+  const pricing=document.getElementById('pricing');
+  document.querySelectorAll('.bt-opt').forEach(opt=>{
+    opt.addEventListener('click',()=>{
+      const annual=opt.dataset.bill==='annual';
+      pricing.classList.toggle('annual',annual);
+      document.querySelectorAll('.bt-opt').forEach(o=>{
+        const on=o===opt;
+        o.classList.toggle('active',on);
+        o.setAttribute('aria-pressed',on?'true':'false');
+      });
     });
   });
 
